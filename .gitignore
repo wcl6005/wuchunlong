@@ -1,0 +1,83 @@
+<<<<<<< HEAD
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Eclipse project files
+.project
+.pydevproject
+.settings
+
+# Mac
+.DS_Store
+
+# Project tmp files
+instance
+logs
+edustack/db
+fabricrc
+deployconfig/*.tmp
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+=======
+
+# .v4p backup files
+*~.xml
+
+# Dynamic plugins .dll
+
+//吴春龙增加  在线修改
+bin/
+>>>>>>> 3cdff90f1bac5d243a2dcc62c56dbc6ae612198b

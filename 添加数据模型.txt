@@ -1,0 +1,59 @@
+1、在models.py中新建表  ..\edustack\  增加
+class Playvideo(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+
+    intvideo = db.Column(db.String(1000))
+    def __str__(self):
+        return self.playnum
+
+2、新建模板文件  ..\edustack\templates\home\ 增加
+ regplay.html
+
+3、修改API   \edustack\views\增加
+from edustack.models import Playvideo
+
+4、修改manage.py增加
+from edustack.models import Playvideo
+新建类  class API_Playvideos(Resource):
+
+
+5、 ..\edustack\views\home.py
+from edustack.models import Playvideo
+@home.route('/regplay/')
+def mregplay():
+    return render_template(r"home/regplay.html")
+
+
+注册播放的信息
+http://localhost:5000/home/regplay/
+
+查看播放注册的信息
+http://localhost:5000/test/test/
+
+
+
+1、edustack\views\test.py
+from edustack.models import Playvideo
+@test.route('/')
+@test.route('/test/')
+def mtest():
+    playvideos = Playvideo.query.all()
+    return render_template(r"test/test.html",playvideos=playvideos,)
+
+
+2、edustack\templates\test\ 
+test.html
+
+
+/*
+function postApi(url, data, callback) {
+    alert('ok');
+    if (arguments.length === 2) {
+        callback = data;
+        data = {};
+    }
+    _ajax('POST', url, data, callback);
+}
+*/
+
+

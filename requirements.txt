@@ -1,0 +1,8 @@
+gevent
+gunicorn
+fabric
+flask
+flask-login
+flask-restful
+flask-sqlalchemy
+markdown2
