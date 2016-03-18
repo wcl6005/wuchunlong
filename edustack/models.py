@@ -170,12 +170,13 @@ class Playvideo(db.Model):
 
     #intvideo = models.CharField(max_length = 1000)   django
     intvideo = db.Column(db.String(1000))
-       
+
+    def __init__(self, playnume, intvideo):
+        self.playnum = playnume
+        self.intvideo = intvideo
     #def __str__(self):
     #    return self.videoname
     #def __str__(self):
     #    return self.img
     def __str__(self):
         return self.playnum
-    def __str__(self):
-        return self.intvideo

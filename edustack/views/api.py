@@ -203,7 +203,7 @@ class API_Playvideos(Resource):
         #    abort(400, message="Email is already in use.")
         #abort(8000, message="ok!")
         
-        playvideo = Playvideo(playnume=playnume, intvideo=intvideo,)
+        playvideo = Playvideo(playnume=playnume, intvideo=intvideo)
 
         db.session.add(playvideo)
         db.session.commit()
