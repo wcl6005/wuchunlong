@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<meta charset='UTF-8'>
+<body>
+<p> add1 提交a b两个数字）</p>
+<!-- action='/blog/add2/'  提交到后台views.py方法(def add2(request):) 将本网页add1.html数据发送到网页add2.html-->
+<form action='/blog/add2/' method='get'>
+    a: <input type='text' name='a' value='6'> <br>
+    b: <input type='text' name='b' value='8'> <br>
+
+    <input type='submit' value='提交'>
+</form>
+
+{{ str }}
+</body>
+</html>

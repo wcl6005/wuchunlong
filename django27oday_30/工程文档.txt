@@ -1,0 +1,76 @@
+开发环境：
+python2.7 django
+JetBrains PyCharm 2.7
+为了压缩工程文件，视频课件改用了一个   "美女杠铃.mp4"
+
+admin
+http://localhost:8000/admin/
+用户名：admin
+密码：123456
+
+主页：
+http://localhost:8000/blog/index/
+
+搜索模块    举例cctv
+http://localhost:8000/blog/index/?q=cctv
+
+播放模块   举例cctv  雇佣兵A
+http://localhost:8000/blog/PlayVideoOady/?filename=/static/angularjsfile/video/cctv12/%E9%9B%87%E4%BD%A3%E5%85%B5A.mp4&id=0
+
+注册模块（用户名唯一）
+http://localhost:8000/blog/register/
+已经注册的用户
+用户名：wcl6005
+密码：1234qazx
+用户名：wuchunlong
+密码：1234qazx
+
+
+登录模块
+http://localhost:8000/blog/signin/
+登录
+用户名：wcl6005
+密码：1234qazx
+
+
+#提交问题模块   进入播放页后 提问 提交问题（正在做...）
+http://localhost:8000/blog/SubmittedQuestions/
+
+技术问答模块（正在做...）
+http://localhost:8000/blog/TechnologyAsk/
+
+2016.3.7
+新建数据库用户表User
+支持中文 图像动态验证码(存在问题：只进行了长度验证，没有实现验证码验证)
+注册模板 注册模块  表单验证 表单提交 密码加密 密码验证 用户名重复提示
+登录模板 登录模块
+django模板
+读写数据库
+
+2016.4.7
+一个课程可以包含多个分课程，课程与分课程分配同一个ID号，每个课程ID号全站是唯一的。
+1、django27oday_2与django27oday_1的最大区别是：
+搜索文件时
+django27oday_1传送给后台处理的是搜索结果；
+django27oday_2传送给后台处理的只是输入的搜索关键字,目的是提高运行速度。
+存在问题：
+只能用回车确认，不能用“提交”？（问题已经解决了2016.4.8）
+2、相关课程PlayVideoOady.html
+设计要求：分类(classification)相同,ID不同，最大课程数:4
+目前只是实现了 从总表中取出了前4个课程。没有实现分类(classification)相同,ID不同
+3、需要解决的共性问题：
+AngularJS 控制中从远程获得的数据，如何在控制器中使用？（问题已经解决了2016.4.10）
+
+2016.4.8
+django27oday_3工程
+解决回车确认，“提交”确认
+base.html 改为
+         <!--a  class="search-btn"  href="http://localhost:8000/blog/index/?q= {{ q }} "></a-->
+         <button type="submit" class="search-btn" value= {{q}} name='q' ></button>
+2016.4.11
+实现了登录后，页面有登录信息.
+django27oday_3工程存在以下问题：
+1、登录。没有7天内免登录。
+2、登录时，从主页登录,返回主页是对的。但在搜索页登录时，也返回了主(页面1-登录页-页面)，不是我想要的结果:页面1-登录页-页面1。想要的结果：从哪个页面登录，应该返回哪个页面。页面1-登录页-页面1。
+问题原因分析：页面1-登录页-页面,登录页是独立界面，页面1的信息传不到登录页,也就传不到页面。
+解决办法：登录信息用数据库管理。好处：可以实现7天内免登录，也容易实现页面1-登录页-页面1，从根本上解决问题。

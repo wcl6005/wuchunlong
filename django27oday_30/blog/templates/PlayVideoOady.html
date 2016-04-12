@@ -1,0 +1,771 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <head>
+    {% load staticfiles %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>好的学院</title>
+        <link href="{% static "oday/css/register.css" %}" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="{% static "oday/js/jquery.min.js " %}"></script>
+
+
+        <link rel="stylesheet" href="http://s1.jikexueyuan.com/course/css/pop_79bec68.css" />
+        <link rel="stylesheet" href="http://s1.jikexueyuan.com/common/video/videojs_28ddfb6.css" />
+
+        <link rel="stylesheet" href="{% static "oday/css/common_sync0_libs_cd30832.css" %}" />
+        <link rel="stylesheet" href="{% static "oday/css/common_sync1_libs_2ca8ce3.css" %}" />
+        <link rel="stylesheet" href="{% static "oday/css/simditor_de1c92b.css" %}" />
+        <link rel="stylesheet" href="{% static "oday/css/player_c3aad74.css" %}" />
+
+        <script src="/static/angularjsfile/js/angular.min.js" ></script>
+
+    </head>
+    <body ng-app="myApp" ng-controller="myCtrl">
+    <!--后台传来，供AngularJS使用-->
+    <div ng-init='filename = "{{filename}}" '>  </div>
+
+    <div ng-init='fname = "{{fname }}" '>  </div>
+    <div ng-init='id = {{ id }} '>  </div>
+
+
+
+    <div  ng-repeat="friend in PlayLessons| filter:q  as searchs ">    </div>
+
+
+    <script>
+            var app = angular.module('myApp', []);
+            app.controller('myCtrl', function($scope, $http) {
+                $http.get("/static/oday/php/dbfile4.php").success(function (response) {$scope.PlayLessons = response.records;});
+                $http.get("/static/oday/php/NewtableLessonListFnames.php").success(function (response) {$scope.PlayLessonLists = response.records;});
+
+            });
+        </script>
+
+<div id="wrapper">
+ <div id="header" class="w-1000">
+   <div  id="pager">
+     <div id="palyer-box" class="cf">
+          准备播放：{{fname }}
+          <div class="videobox player-video" last_play_position="0" time="841" seq="1" lesson_count="5" course_id="2614">
+
+             <img src="{% static "oday/img/next_585415f.png"%}" courseurl="/course/2614_2.html?ss=1" class="cnext" id="lesson-next">
+
+             <video class='video-js vjs-default-skin' controls='controls' height='100%' id='play_video' poster="{% static "oday/img/start.jpg"%}" last_play_position="0"  time="841" seq="1" lesson_count="" data-setup='{"example_option":true,"customControlsOnMobile": true}' preload='none'
+                    width="100%">
+                 <!-- 如果浏览器不兼容HTML5则使用flash播放 -->
+                 <source src={{filename}}  type="video/mp4" />
+                 <object id="flash_fallback_1" class="vjs-flash-fallback" width="100%" height="100%" type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf">
+                     <param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" />
+                     <param name="allowfullscreen" value="true" />
+                     <param name="flashvars" value='config={$jsonConfig}' />
+                 </object>
+             </video>
+          </div>
+
+
+         {% verbatim %}
+
+	
+	   <div class="player-nav">
+		 <ul>
+			<li class="mulu">
+				<i></i>
+				<p>目录</p>
+				<div class="mulu-box" id="videolist">
+					<div class="mulu-content">
+					  <strong>目录 <span id="shouqi">收起&gt;</span></strong>
+						<!--case-->
+						<div class="case cf">
+						<div id="simTestContent2" class="simScrollCont">
+
+                          <!--总课简介 angularJS产生循环-->
+                          <div ng-repeat="search in searchs">
+                                <div ng-if=" id  == search.id  ">
+                                     <p>课简介：{{ search.introduction}}</p>
+                                </div>
+                          </div>
+
+                            <!-- PlayLessonLists angularJS产生循环-->
+                            <div ng-repeat="PlayLessonList in PlayLessonLists">
+
+                              <div ng-if=" id  == PlayLessonList.id  ">
+
+
+							       <dl class="lessonvideo-list">
+                                      <div ng-if=" filename  == PlayLessonList.filename  ">
+
+
+                                        <dd class="playing">
+                                           <h2>
+
+                                                <a  href="http://localhost:8000/blog/PlayVideoOady/?filename={{ PlayLessonList.filename }}&id={{ PlayLessonList.id }}">
+                                               {{PlayLessonList.fname }}
+                                                </a>
+                                                <span class="lesson-time">{{ PlayLessonList.time }}分钟</span>
+                                           </h2>
+                                           <blockquote> 简介：{{ PlayLessonList.description}}</blockquote>
+                                        </dd>
+                                      </div>
+
+                                      <div ng-if=" fname  != PlayLessonList.fname  ">
+
+                                        <dd class="">
+										   <h2>
+										      <span class="sm-icon "></span>
+                                               <a href="http://localhost:8000/blog/PlayVideoOady/?filename={{ PlayLessonList.filename }}&id={{ PlayLessonList.id }}" >
+
+                                                   {{PlayLessonList.fname }}</a>
+										        <span class="lesson-time">{{ PlayLessonList.time }}分钟</span>
+									       </h2>
+									    </dd>
+                                      </div>
+                                   </dl>
+                              </div>
+                            </div> <!-- PlayLessonLists angularJS产生循环  end-->
+
+                        </div>
+
+
+
+							<div id="simScrollTest2" class="simScroll" style="visibility: visible;">
+								<div tag="simArea" class="simScrollDragArea" style="height: 202px;">
+									<div tag="simDrag" class="simScrollDrag" style="position: absolute; top: 2px; width: 14px; height: 39px;"></div>
+								</div>
+							</div>
+						</div>
+						<!--case end-->
+					</div>
+				</div>
+			</li>
+			
+				
+					<li class="ask" onclick="javascript:;" id="q_pop" jktag="&posArea=0002&posOper=8017&posColumn=2.1">
+				
+			
+				<i></i>
+				<p>提问</p>
+				<div class="ask-box">提交问题111</div>
+			</li>
+
+			
+			<li class="xiazai">
+					<a href="javascript:void(0)" class="down-course down-ajax" id="down_video"><i></i><p>下载</p></a>
+					<div class="xiazai-box">
+						<a href="javascript:void(0)"  class="down-course down-ajax" jktag="&posArea=0002&posOper=8006&posColumn=3.1" >下载本节视频</a>
+					</div>
+			
+			</li>
+
+			<li class="xianlu">
+				<i></i>
+				<p>线路</p>
+				<div class="xianlu-box">
+					<em>视频太卡？试试切换线路</em> 
+					<span class="bc-blue"><a href="http://www.jikexueyuan.com/course/2614_1.html">√ 线路1</a></span> 
+					
+					 
+					<span><a href="http://www.jikexueyuan.com/course/2614_1.html?ss=2" jktag="&posGP=103001&posArea=0002&posOper=8018&posColumn=4.2&aVXl=2">√ 线路2</a></span> 
+				</div>
+			</li>
+			
+			<li class="shouchang user-action" id="shouchang">
+			
+				
+					<i class="" jktag="&posArea=0002&posOper=8019&posColumn=5.2"></i>
+				 
+				<p>收藏</p>
+				<div class="shouchang-box">收藏课程</div>
+			</li>
+			<li class="fenxiang">
+				<i></i>
+				<p>分享</p>
+				<div class="fenxiang-box">
+					<i class="sina-icon" jktag="&posArea=0002&posOper=8020&posColumn=6.1"></i>
+					<i class="qq-icon" jktag="&posArea=0002&posOper=8021&posColumn=6.2"></i>
+				</div>
+			</li>
+		 </ul>
+		 <div class="lianbo relative" val="1" courseurl="http://localhost:8000/blog/PlayVideoOady/" >
+			<i></i>
+			<p>连播</p>
+			<div class="lianbobox">连续播放</div>
+		 </div>
+		 <div class="deng-icon relative" jktag="&posArea=0002&posOper=8022&posColumn=8.1">
+			<i></i>
+			<p>关灯</p>
+			<div class="deng-box">关灯模式</div>
+		 </div>
+		 <div class="slow-time-tip">
+			<i class="w-sj"></i>
+			<img src="http://s1.jikexueyuan.com/course/images/close2_77b3a90.png" class="closew">
+			<strong>视频加载太慢？</strong>
+			<p>我们有两条线路可以选择，试试切换线路吧</p>
+		 </div>
+	   </div>
+     </div>
+         <script>
+	       var courseInfo = {
+		  	id: '2614',
+			title: '绘制专业的产品原型应用示例：猿题库 App 产品原型设计'
+		 }
+         </script>
+
+	 <div class="lesson-table cf">
+   	      <script src="http://s1.jikexueyuan.com/course/editor/scripts/module_171ec63.js"></script>
+	      <script src="http://s1.jikexueyuan.com/course/editor/scripts/hotkeys_e175c92.js"></script>
+  	      <script src="http://s1.jikexueyuan.com/course/editor/scripts/uploader_ad281df.js"></script>
+          <script src="http://s1.jikexueyuan.com/course/editor/scripts/simditor_4c30884.js"></script>
+       <!-- AngularJS解决花括号变量冲突问题 -->
+
+
+
+       <div class="lesson-teacher">
+          <div class="bc-box">
+             <div ng-repeat="PlayLessonList in PlayLessonLists">
+                <div ng-if=" fname  == PlayLessonList.fname  ">
+
+                    <h2><a href="#">{{PlayLessonList.fname}}</a></h2>
+                    <div class="timebox"><span>{{ PlayLessonList.time }}分钟</span>
+                       <span class="mar-l30">{{PlayLessonList.date }}</span>
+                    </div>
+                </div>
+             </div>
+
+
+             <!-- angularJS产生循环-->
+             <div ng-repeat="search in searchs">
+                <div ng-if=" id  == search.id  ">
+
+                   <div class="teacher-infor cf">
+
+                       <a href="http://my.jikexueyuan.com/8592485271/record/">
+                           <img src={{search.img}} >
+                       </a>
+                       <div class="infor-text">
+                           <strong>
+                              <a href="http://my.jikexueyuan.com/8592485271/record/">
+                                  {{search.teacher }}
+                              </a>
+                           </strong>
+                            <p>{{ search.title }}</p>
+                       </div>
+                   </div>
+                </div>
+             </div>
+
+              <!-- angularJS产生循环-->
+              <div ng-repeat="search in searchs">
+                  <div ng-if=" id  == search.id  ">
+                   <div class="infor-content">
+                       <!-- 总课背景 -->
+                       <p>课背景:{{ search.background}}</p>
+                   </div>
+                </div>
+             </div>
+
+
+
+
+
+             <div class="btn-box">
+
+                    <a href="javascript:void('0');" class="greenbtn sc_btn user-action" id="shouchang-towbtn" jktag="&posArea=0003&posOper=8013&posColumn=0.1">收藏</a>
+
+                    <a class="orinagebtn"  id="course_download"  course_id = "2614"title="下载课程对应的源代码、素材等资料" href="javascript:void('0');" jktag="&posArea=0003&posOper=8015&posColumn=0.1">资料下载</a>
+             </div>
+          </div>
+
+          <div class="less-tag">
+
+                <span><a href="http://www.jikexueyuan.com/tag/Axure.html" jktag="posGP=105002&posArea=0003&posOper=8031&posColumn=.1" >Axure</a></span>
+
+                <span><a href="http://www.jikexueyuan.com/tag/猿题库.html" jktag="posGP=105002&posArea=0003&posOper=8031&posColumn=.2" >猿题库</a></span>
+
+                <span><a href="http://www.jikexueyuan.com/tag/专业原型设计.html" jktag="posGP=105002&posArea=0003&posOper=8031&posColumn=.3" >专业原型设计</a></span>
+          </div>
+       </div>
+
+
+
+      <div class="video-list">
+          <div class="lessonlist-nav cf">
+             <ul class="cf time-hot">
+                <li class="nav_on" jktag="&posOper=8037&posArea=0009&posColumn=9.1">课时列表</li>
+                <li jktag="&posOper=8036&posArea=0009&posColumn=9.2">技术问答</li>
+             </ul>
+          </div>
+          <div class="lesson-box" style="display: block;">
+             <ul>
+                  <!-- AngularJS解决花括号变量冲突问题 -->
+
+                 <!-- PlayLessonLists angularJS产生循环-->
+                 <div ng-repeat="PlayLessonList in PlayLessonLists">
+
+                    <div ng-if=" id  == PlayLessonList.id  ">
+                       <div ng-if=" fname  == PlayLessonList.fname  ">
+
+                           <li class="on">
+
+                                <i class="lessonmbers"><em>{{ PlayLessonList.numbering }}</em></i>
+                                <div class="text-box">
+                                        <h2>
+                                             <a href="http://localhost:8000/blog/PlayVideoOady/?filename={{PlayLessonList.filename}}&id={{ PlayLessonList.id }}" >
+                                                   {{ PlayLessonList.fname }}
+                                             </a>
+                                             <p class="f_r">{{ PlayLessonList.time }}分钟</p>
+                                        </h2>
+                                        <p>简介：{{ PlayLessonList.description }}</p>
+                                </div>
+                           </li>
+                       </div>
+                       <div ng-if=" fname  != PlayLessonList.fname  ">
+
+                          <li class="">
+
+                               <i class="lessonmbers"><em>{{ PlayLessonList.numbering }}</em></i>
+                               <div class="text-box">
+                                  <h2>
+                                     <a href="http://localhost:8000/blog/PlayVideoOady/?filename={{PlayLessonList.filename}}&id={{ PlayLessonList.id }}" >
+                                         {{ PlayLessonList.fname }}
+                                     </a>
+
+                                     <p class="f_r">{{ PlayLessonList.time }}分钟</p>
+                                  </h2>
+                                   <p>简介：{{ PlayLessonList.description }}</p>
+                               </div>
+                          </li>
+                       </div>
+                    </div>
+                 </div>
+
+             </ul>
+          </div>
+          <!--lesson-box-->
+          <div class="lesson-box" style="display: none;">
+
+            <button class="greenbtn askqustion"  id="q_pop1"  jktag="&posArea=0004&posOper=8032&posColumn=1.1" >发布问题</button>
+          </div>
+   
+          <style>
+           ul.pages li {
+            width: 30px !important;
+            height: 30px !important;
+            padding: 0px !important;
+            clear: inherit !important;
+            float: left;
+            border: 1px solid #e4e4e4 !important;
+            }
+            ul.pages li.pgNext {
+               width: 40px !important;
+            }
+
+            ul.pages li.pagenow {
+              width: 100px !important;
+            }
+
+        ul.pages li.pgEmpty {
+            border: 1px solid #f0f0f0;
+            color: #d9d6c3;
+            background-color: #f0f0f0;
+            width: 50px !important;
+        }
+
+        ul.pages li.thpoint {
+            margin-top: 0px !important;
+            border: none !important;
+        }
+
+        ul.pages li.go {
+            margin-top: 0px !important;
+            line-height: 30px !important;
+        }
+
+        ul.pages li.pagetotal {
+
+            width: 70px !important;
+        }
+
+         </style>
+      </div>
+
+      <!--弹出1-->
+      <div class="add-pop1" id="pop-one" style="display: none;">
+          <span class="popclose close-one"></span>
+
+	       <div class="add-title"><strong>添加新技术问题</strong>
+		    <!-- <span>非技术类问题，请移步 <a href="#">[互动交流区]</a></span> -->
+	       </div>
+	       <div class="input-title">
+		      <div class="inputbox cf">
+			      <div class="user-img">
+				      <img src="/static/oday/img/default.gif" >
+			      </div>
+			      <input type="text" placeholder="请输入问题的标题" class="one-input">
+		      </div>
+		      <button class="input-inforbtn">填写详情</button>
+	       </div>
+
+	       <div class="qustion-list">
+		       <ul id="returnQaTopics">
+
+		      </ul>
+	       </div>
+      </div>
+       <!--弹出1 end-->
+
+       <!--弹出2-->
+        <div class="add-pop1" id="pop-tow" style="display: none;">
+            <span class="popclose close-two"></span>
+
+	        <div class="add-title">
+                <strong>添加新技术问题</strong>
+		         <!-- <span>非技术类问题，请移步 <a href="#">[互动交流区]</a></span> -->
+	        </div>
+
+            <!--提交问题-->
+	        <form id='reply_form' action='/blog/SubmittedQuestions/' method='get'>
+	            <div class="input-title">
+		            <div class="inputbox2 cf">
+			             <div class="user-img">
+				             <img src="/static/oday/img/default.gif" >
+			             </div>
+			             <!-- <input type="text" placeholder="请输入问题的标题" class="tow-input"> -->
+			            <div>
+				            <input type="text" name="qa_sub_title" id="qa_sub_title" data-type="blur" class="tow-input" autocomplete="off">
+			            </div>
+		            </div>
+                </div>
+	            <div class="lesson-qustiontitle">问题描述越详细，被解答的速度越快</div>
+	            <div class="edit-box" id="replies_editor">
+                         <!--问题内容-->
+		                 <textarea name="editor" id="editor" placeholder="文字请尽量表述清晰、详尽、完整，针对课程的问题请注明出现时间，以便于快速查找问题并及时为你解答。" autofocus >
+
+		                 </textarea>
+	            </div>
+	            <div class="emailandlevel cf">
+		            <div class="email">
+			             <input type="checkbox" checked="checked" name="send_email">有新回答时请邮件提醒我
+		            </div>
+		            <div class="level">
+                        <span> <input type="radio" name="qalevel" value="1">十万火急</span>
+                        <span> <input type="radio" name="qalevel" value="2"checked="">着急，拜托快点</span>
+                        <span> <input type="radio" name="qalevel" value="3">不急，慢慢解决</span>
+		            </div>
+	            </div>
+
+	            <button class="greenbtn tiwt-btn" type='submit'>提交问题 </button>
+	        </form>
+
+        </div>
+       <!--弹出2end-->
+     </div>
+
+    <div class="onestage w-1000 m ">
+       <h2>相关课程</h2>
+     <div class="lesson-list">
+       <ul class="cf">
+
+
+             <div ng-if=" n = 0"> </div>
+
+                <li>
+	             <div class="lessonimg-box">
+		              <i class="user-action lesson-shoucang " style="display: none;" ></i>
+
+		             <a href="http://localhost:8000/blog/PlayVideoOady/?filename={{ PlayLessons[n]['filename1'] }}&id={{ PlayLessons[n]['id'] }}" >
+			           <img src="{{ PlayLessons[n]['lessonsimg'] }}"
+                            class="lessonimg" >
+			
+			            <div class="lessonplay" style="opacity: 0;">
+				             <i class="playericon" ></i>
+                        </div>
+
+		             </a>
+	             </div>
+	             <div class="lesson-infor" style="height: 88px;">
+	             	<h2 class="lesson-info-h2">
+                         <a href="http://localhost:8000/blog/PlayVideoOady/?filename={{ PlayLessons[n]['filename1'] }}&id={{ PlayLessons[n]['id'] }}" >
+                         {{ PlayLessons[n]['fname1'] }}
+                         </a>
+                     </h2>
+		            <p style="height: 0px; opacity: 0; display: none;">
+                        {{ PlayLessons[n]['introduction'] }}
+		            </p>
+		             <div class="timeandicon">
+			            <div class="cf">
+				           <dl>
+				            	<dd class="mar-b8"><i class="time-icon"></i>
+                                    <em>总课时：{{ PlayLessons[n]['timesum'] }}分钟</em>
+					            </dd>
+					            <dd class="zhongji">
+						
+					                 <i class="xinhao-icon3"></i>
+                                       <em>高级</em>
+					            </dd>
+				           </dl>
+				          <em class="learn-number">{{ PlayLessons[n]['numbersum'] }}人学习</em>
+			            </div>
+			            <div class="cf">
+				           <div class="lessonicon-box">
+
+                               <a href="http://localhost:8000/blog/PlayVideoOady/?filename={{ PlayLessons[n]['filename1'] }}&id={{ PlayLessons[n]['id'] }}" >
+						           <img width="16" src="/static/oday/img/pm.png"
+                                        alt="axure" title="Axure"  >
+					            </a>
+				            </div>
+			            </div>
+		             </div>
+	             </div>
+             </li>
+
+
+           <div ng-if=" n = 1 "> </div>
+           <li  >
+               <div class="lessonimg-box">
+                   <i class="user-action lesson-shoucang " style="display: none;" ></i>
+
+                   <a href="http://localhost:8000/blog/PlayVideoOady/?filename={{ PlayLessons[n]['filename1'] }}&id={{ PlayLessons[n]['id'] }}" >
+                       <img src="{{ PlayLessons[n]['lessonsimg'] }}"
+                            class="lessonimg" >
+
+                       <div class="lessonplay" style="opacity: 0;">
+                           <i class="playericon" ></i>
+                       </div>
+
+                   </a>
+               </div>
+               <div class="lesson-infor" style="height: 88px;">
+                   <h2 class="lesson-info-h2">
+                       <a href="http://localhost:8000/blog/PlayVideoOady/?filename={{ PlayLessons[n]['filename1'] }}&id={{ PlayLessons[n]['id'] }}" >
+                           {{ PlayLessons[n]['fname1'] }}
+                       </a>
+                   </h2>
+                   <p style="height: 0px; opacity: 0; display: none;">
+                       {{ PlayLessons[n]['introduction'] }}
+                   </p>
+                   <div class="timeandicon">
+                       <div class="cf">
+                           <dl>
+                               <dd class="mar-b8"><i class="time-icon"></i>
+                                   <em>总课时：{{ PlayLessons[n]['timesum'] }}分钟</em>
+                               </dd>
+                               <dd class="zhongji">
+
+                                   <i class="xinhao-icon3"></i>
+                                   <em>高级</em>
+                               </dd>
+                           </dl>
+                           <em class="learn-number">{{ PlayLessons[n]['numbersum'] }}人学习</em>
+                       </div>
+                       <div class="cf">
+                           <div class="lessonicon-box">
+
+                               <a href="http://localhost:8000/blog/PlayVideoOady/?filename={{ PlayLessons[n]['filename1'] }}&id={{ PlayLessons[n]['id'] }}" >
+                                   <img width="16" src="/static/oday/img/pm.png"
+                                        alt="axure" title="Axure"  >
+                               </a>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </li>
+
+
+           <div ng-if=" n = 2 "> </div>
+           <li  >
+               <div class="lessonimg-box">
+                   <i class="user-action lesson-shoucang " style="display: none;" ></i>
+
+                   <a href="http://localhost:8000/blog/PlayVideoOady/?filename={{ PlayLessons[n]['filename1'] }}&id={{ PlayLessons[n]['id'] }}" >
+                       <img src="{{ PlayLessons[n]['lessonsimg'] }}"
+                            class="lessonimg" >
+
+                       <div class="lessonplay" style="opacity: 0;">
+                           <i class="playericon" ></i>
+                       </div>
+
+                   </a>
+               </div>
+               <div class="lesson-infor" style="height: 88px;">
+                   <h2 class="lesson-info-h2">
+                       <a href="http://localhost:8000/blog/PlayVideoOady/?filename={{ PlayLessons[n]['filename1'] }}&id={{ PlayLessons[n]['id'] }}" >
+                       {{ PlayLessons[n]['fname1'] }}
+                       </a>
+                   </h2>
+                   <p style="height: 0px; opacity: 0; display: none;">
+                       {{ PlayLessons[n]['introduction'] }}
+                   </p>
+                   <div class="timeandicon">
+                       <div class="cf">
+                           <dl>
+                               <dd class="mar-b8"><i class="time-icon"></i>
+                                   <em>总课时：{{ PlayLessons[n]['timesum'] }}分钟</em>
+                               </dd>
+                               <dd class="zhongji">
+
+                                   <i class="xinhao-icon3"></i>
+                                   <em>高级</em>
+                               </dd>
+                           </dl>
+                           <em class="learn-number">{{ PlayLessons[n]['numbersum'] }}人学习</em>
+                       </div>
+                       <div class="cf">
+                           <div class="lessonicon-box">
+
+                               <a href="http://localhost:8000/blog/PlayVideoOady/?filename={{ PlayLessons[n]['filename1'] }}&id={{ PlayLessons[n]['id'] }}" >
+                                   <img width="16" src="/static/oday/img/pm.png"
+                                        alt="axure" title="Axure"  >
+                               </a>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </li>
+
+
+             <div ng-if=" n = 3 "> </div>
+             <li  >
+                 <div class="lessonimg-box">
+                     <i class="user-action lesson-shoucang " style="display: none;" ></i>
+
+                     <a href="http://localhost:8000/blog/PlayVideoOady/?filename={{ PlayLessons[n]['filename1'] }}&id={{ PlayLessons[n]['id'] }}" >
+                     <img src="{{ PlayLessons[n]['lessonsimg'] }}"
+                              class="lessonimg" >
+
+                         <div class="lessonplay" style="opacity: 0;">
+                             <i class="playericon" ></i>
+                         </div>
+
+                     </a>
+                 </div>
+                 <div class="lesson-infor" style="height: 88px;">
+                     <h2 class="lesson-info-h2">
+                         <a href="http://localhost:8000/blog/PlayVideoOady/?filename={{ PlayLessons[n]['filename1'] }}&id={{ PlayLessons[n]['id'] }}" >
+                         {{ PlayLessons[n]['fname1'] }}
+                         </a>
+                     </h2>
+                     <p style="height: 0px; opacity: 0; display: none;">
+                         {{ PlayLessons[n]['introduction'] }}
+                     </p>
+                     <div class="timeandicon">
+                         <div class="cf">
+                             <dl>
+                                 <dd class="mar-b8"><i class="time-icon"></i>
+                                     <em>总课时：{{ PlayLessons[n]['timesum'] }}分钟</em>
+                                 </dd>
+                                 <dd class="zhongji">
+
+                                     <i class="xinhao-icon3"></i>
+                                     <em>高级</em>
+                                 </dd>
+                             </dl>
+                             <em class="learn-number">{{ PlayLessons[n]['numbersum'] }}人学习</em>
+                         </div>
+                         <div class="cf">
+                             <div class="lessonicon-box">
+
+                                 <a href="http://localhost:8000/blog/PlayVideoOady/?filename={{ PlayLessons[n]['filename1'] }}&id={{ PlayLessons[n]['id'] }}" >
+                                     <img width="16" src="/static/oday/img/pm.png"
+                                          alt="axure" title="Axure"  >
+                                 </a>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </li>
+
+
+
+
+
+
+
+
+
+       </ul>
+     </div>
+
+	   <style type="text/css">
+		.lesson-list ul {
+			width: 1020px !important;
+		}
+		.lesson-list ul li {
+			margin: 0px !important;
+		}
+		.lesson-list ul li {
+			margin-right: 13px !important;
+		}
+	    </style>
+     </div> <!--div class="onestage w-1000 m "-->
+   </div>
+ </div>
+
+
+ <div class="gotop" id="gototop">
+
+     <div class="pewm2">
+         <!-- 广告位：首页右侧悬浮上_001-1 -->
+         <div >
+
+             <h2><img src="/static/oday/img/float_1.png"    ></h2>
+         </div>
+     </div>
+     <div class="pewm3">
+         <!-- 广告位：首页右侧悬浮上_001-2 -->
+         <div >
+             <h2><img src="/static/oday/img/float_2.png"    ></h2>
+
+         </div>
+     </div>
+ </div>
+
+
+
+</div>
+         <script type="text/javascript">LazyLoad=function(e){function t(t,n){var s,r=e.createElement(t);for(s in n)n.hasOwnProperty(s)&&r.setAttribute(s,n[s]);return r}function n(e){var t,n,s=i[e];s&&(t=s.callback,n=s.urls,n.shift(),u=0,n.length||(t&&t.call(s.context,s.obj),i[e]=null,f[e].length&&r(e)))}function s(){var t=navigator.userAgent;o={async:e.createElement("script").async===!0},(o.webkit=/AppleWebKit\//.test(t))||(o.ie=/MSIE|Trident/.test(t))||(o.opera=/Opera/.test(t))||(o.gecko=/Gecko\//.test(t))||(o.unknown=!0)}function r(r,u,h,g,d){var p,y,m,b,k,v,j=function(){n(r)},w="css"===r,E=[];if(o||s(),u)if(u="string"==typeof u?[u]:u.concat(),w||o.async||o.gecko||o.opera)f[r].push({urls:u,callback:h,obj:g,context:d});else for(p=0,y=u.length;y>p;++p)f[r].push({urls:[u[p]],callback:p===y-1?h:null,obj:g,context:d});if(!i[r]&&(b=i[r]=f[r].shift())){for(l||(l=e.head||e.getElementsByTagName("head")[0]),k=b.urls,p=0,y=k.length;y>p;++p){if(v=k[p],w?m=o.gecko?t("style"):t("link",{href:v,rel:"stylesheet"}):(m=t("script",{src:v}),m.async=!1),m.className="lazyload",m.setAttribute("charset","utf-8"),o.ie&&!w&&"onreadystatechange"in m&&!("draggable"in m))m.onreadystatechange=function(){/loaded|complete/.test(m.readyState)&&(m.onreadystatechange=null,j())};else if(w&&(o.gecko||o.webkit))if(o.webkit){var T;if(b.urls[p]=m.href,T=c()){p--,y=k.length;continue}}else m.innerHTML='@import "'+v+'";',a(m);else m.onload=m.onerror=j;E.push(m)}var A=document.createDocumentFragment();for(p=0,y=E.length;y>p;++p)A.appendChild(E[p]);var x;return"css"===r?x=l:"js"===r&&(x=document.getElementById("pages-container")||l),x.appendChild(A),E}}function a(e){var t;try{t=!!e.sheet.cssRules}catch(s){return u+=1,void(200>u?setTimeout(function(){a(e)},50):t&&n("css"))}n("css")}function c(){var e,t=i.css,s=!1;if(t){for(e=h.length;--e>=0;)if(h[e].href===t.urls[0]){s=!0,n("css");break}u+=1,t&&(200>u?setTimeout(c,50):n("css"))}return s}var o,l,i={},u=0,f={css:[],js:[]},h=e.styleSheets;return{css:function(e,t,n,s){r("css",e,t,n,s)},js:function(e,t,n,s){r("js",e,t,n,s)}}}(this.document);</script>
+	<script type="text/javascript" src="http://sp1.jikexueyuan.com/static/scripts/LoginAndRegister.js"></script>
+     <script type="text/javascript">var _ready = false;_list = [];_when = function(cb) {_ready?cb():_list.push(cb);};LazyLoad.js(['http://s1.jikexueyuan.com/common/js/TweenMax.min_5a7da72.js', 'http://s1.jikexueyuan.com/common/pkg/common_sync0_libs_8bb7749.js', 'http://s1.jikexueyuan.com/common/js/setcookie_51991d5.js', 'http://s1.jikexueyuan.com/common/js/swfobject_5fb5452.js', 'http://s1.jikexueyuan.com/common/js/web_socket_6997860.js', 'http://s1.jikexueyuan.com/common/js/websocket_33f324b.js', 'http://s1.jikexueyuan.com/common/pkg/common_sync1_libs_1127806.js', 'http://s1.jikexueyuan.com/course/widget/player/player_f7ecae4.js', 'http://s1.jikexueyuan.com/common/video/video2_0e33a17.js', 'http://s1.jikexueyuan.com/course/js/share_33aa425.js', 'http://s1.jikexueyuan.com/course/js/course_2f97b94.js', 'http://s1.jikexueyuan.com/common/widget/pager/jquery.pager_5df04e5.js', 'http://s1.jikexueyuan.com/course/js/lessonlist_614ec49.js', 'http://s1.jikexueyuan.com/course/widget/lessonteacher/lessonteacher_cf06a13.js', 'http://s1.jikexueyuan.com/course/widget/videolist/videolist_0edef5a.js'], function () {!function() {
+	require('common:widget/topnav/topnav.js').init();
+}();
+!function() { require("common:widget/header/pageloading.js").init("http://search.jikexueyuan.com"); require('common:widget/header/header.js').init(); }();
+!function() { vov = null; videojs.options.flash.swf = ""; }();
+!function() {
+    $(function(){
+    	    var myurl = $('#reply_form').attr("myurl");
+		var editor = editor = new Simditor({
+			  textarea: $('#editor'),
+			  upload:{
+			    url:myurl,
+			    params: null,
+			    fileKey: 'upload_file',
+			    connectionCount: 3,
+			    pasteImage:true,
+			    upload:true,
+			    leaveConfirm: '正在上传文件，如果离开上传会自动取消'
+			  }
+		 });
+		 editor.focus();
+    })
+
+ }();
+!function() {
+	require('course:widget/player/player.js').init();
+}();
+!function() {
+	require("course:widget/lessonteacher/lessonteacher.js").init();
+}();
+!function() {
+    require("course:widget/videolist/videolist.js").init();
+}();
+!function() {
+	 	lessonlist.asklist();
+	 }();;_ready=true;var _item; while((_item=_list.shift())){_item();}});</script>
+
+
+    {% endverbatim %}
+	 </body>
+</html>
+
+
+{% endblock %}

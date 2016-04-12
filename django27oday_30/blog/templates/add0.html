@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <script src="/static/angularjsfile/js/angular.min.js/"></script>
+</head>
+<body>
+
+fname:{{ fname }} </br> </br>
+
+
+PlayLessons后台传来：{{ PlayLessons }}  </br> </br>
+PlayLessonLists 后台传来：{{ PlayLessonLists  }}  </br>
+
+{% verbatim %}
+<div ng-app="myApp" ng-controller="customersCtrl">
+        <div ng-repeat="PlayLessonList in PlayLessonLists ">
+
+        </div>
+
+   <a href="http://localhost:8000/blog/mytest/?a='a'&PlayLessons={{ PlayLessons }}
+   &PlayLessonLists={{ PlayLessonLists }}">链接</a>
+
+
+</div>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('customersCtrl', function($scope, $http) {
+      $http.get("/static/oday/php/PlayLesson.php").success(function (response) {$scope.PlayLessons = response.records;});
+      $http.get("/static/oday/php/PlayLessonList1.php").success(function (response) {$scope.PlayLessonLists = response.records;});
+
+    });
+</script>
+{% endverbatim %}
+</body>
+</html>

@@ -1,0 +1,29 @@
+﻿{
+"records":
+[
+{
+"filename":"/static/angularjsfile/video/美女杠铃.mp4",
+"img":"/static/angularjsfile/img/p1.jpg",
+"teacher":"Oday",
+"title":"好的学院签约布道师",
+"list":"数据库优化技巧",
+"description":
+"课程背景：在实际的工作中我们经常会遇到关于数据库优化的问题，这一次课就是通过一个 IP 库查询优化的实战来介绍常见的数据库优化方法。核心内容： 1. 使用 Python 进行 ETL。2. 数据库优化技巧。3. 同时优化数据库端和客户端 软件环境：MySQL、Python 是否提供资料：是 课程等级：中级 适合人群：掌握 Python、MySQL 的同学。",
+"number":"215人参加学习",
+"time":"38课时58分钟",
+"date":"2016.3.26"
+},
+{
+"filename":"/static/angularjsfile/video/雇佣兵A.mp4",
+"img":"/static/angularjsfile/img/p2.jpg",
+"teacher":"吴文相",
+"title":"好的学院签约布道师",
+"list":"数据库优化技巧",
+"description":
+"课程背景：在实际的工作中我们经常会遇到关于数据库优化的问题，这一次课就是通过一个 IP 库查询优化的实战来介绍常见的数据库优化方法。核心内容： 1. 使用 Python 进行 ETL。2. 数据库优化技巧。3. 同时优化数据库端和客户端 软件环境：MySQL、Python 是否提供资料：是 课程等级：中级 适合人群：掌握 Python、MySQL 的同学。",
+"number":"46人参加学习",
+"time":"26课时28分钟",
+"date":"2016.1.18"
+}
+]
+}

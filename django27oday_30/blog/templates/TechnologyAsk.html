@@ -1,0 +1,1840 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <title>好的学院技术问答- IT学习问题资料库</title>
+    <meta name="keywords" content="android,ios,flash,java,python,html5,swift,cocos2dx知识问答" />
+    <meta name="description" content="好的学院技术问答为你提供最全的IT问题解决方案，帮助你寻找答案，分享知识。" />
+    <link rel="stylesheet" href="/static/oday/css/common.css">
+
+</head>
+<body>
+<div class="wrapper">
+
+<!--link rel="stylesheet" href="http://wenda.jikexueyuan.com/home/static/css/ques.css"-->
+<link rel="stylesheet" href="/static/oday/css/ques.css">
+
+<!-- container -->
+<section class="container cf">
+
+<!-- main -->
+<div id="main">
+<!-- qsort -->
+<div class="qsort1">
+<div class="wrap">
+<div class="qsort-mode">
+<div class="quesall">
+<h1 id="allques-title">全部分类</h1><i class="arrow"></i>
+<!-- 分类列表 -->
+<div class="lesson-classfiy-nav">
+<ul style="overflow: hidden; border-bottom-width: 0px; height: 289px;">
+<li>
+    <div>
+        <a cgid="1" href="http://wenda.jikexueyuan.com/lists/mobile/">移动开发</a>
+        <div class="lesson-list-show" style="width: 401px; min-height: 410px;">
+            <div style="width: 400px;">
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/app/" cgid="13">应用开发</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/android/" cgid="63">Android</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/ios/" cgid="63">iOS</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/games/" cgid="13">游戏开发</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/cocos/" cgid="63">Cocos</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/unity3d/" cgid="63">Unity3D</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/spritekit2d/" cgid="63">SpriteKit 2D</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/unreal/" cgid="63">Unreal</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/frame/" cgid="13">常用框架</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/cordova/" cgid="63">Cordova</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/reactnative1/" cgid="63">React Native</a>
+
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</li>
+<li>
+    <div>
+        <a cgid="1" href="http://wenda.jikexueyuan.com/lists/web/">前端开发</a>
+        <div class="lesson-list-show" style="width: 401px; min-height: 410px;">
+            <div style="width: 400px;">
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/webbase/" cgid="13">前端基础</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/html/" cgid="63">HTML</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/css/" cgid="63">CSS</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/javascript/" cgid="63">JavaScript</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/html5/" cgid="63">HTML5</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/css3/" cgid="63">CSS3</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/prospective/" cgid="63">技术前瞻</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/advance/" cgid="13">前端进阶</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/typescript/" cgid="63">Typescript</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/security/" cgid="63">前端安全</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/practice/" cgid="63">项目实战</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/webframe/" cgid="13">前端框架</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/jquery/" cgid="63">jQuery</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/jqueryui/" cgid="63">jQuery UI</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/jquerymobile/" cgid="63">jQuery Mobile</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/extjs/" cgid="63">Ext JS</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/angularjs/" cgid="63">AngularJS</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/reactjs/" cgid="63">ReactJS</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/bootstrap/" cgid="63">Bootstrap</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/reactnative/" cgid="63">React Native</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/backbone/" cgid="63">Backbone</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/threejs/" cgid="63">Three.js</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/mootools/" cgid="63">MooTools</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/compass/" cgid="63">Compass</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/html5games/" cgid="13">HTML5游戏</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/canvas/" cgid="63">Canvas</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/svg/" cgid="63">SVG</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/webgl/" cgid="63">WebGL</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/cocos2djs/" cgid="63">Cocos2d-js</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/createjs/" cgid="63">CreateJS</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/webflash/" cgid="63">Flash</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/webunreal/" cgid="63">Unreal</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/webegret/" cgid="63">Egret</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/phaser/" cgid="63">Phaser</a>
+
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</li>
+<li>
+    <div>
+        <a cgid="1" href="http://wenda.jikexueyuan.com/lists/dev/">后端开发</a>
+        <div class="lesson-list-show" style="width: 401px; min-height: 410px;">
+            <div style="width: 400px;">
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/python/" cgid="13">Python</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/pythonbase/" cgid="63">Python 基础</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/web2py/" cgid="63">web2py</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/django/" cgid="63">Django</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/flask/" cgid="63">Flask</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/gui/" cgid="63">GUI</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/datamininganalysis/" cgid="63">数据挖掘与分析</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/php/" cgid="13">PHP</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/phpbase/" cgid="63">PHP 基础</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/yii/" cgid="63">YII</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/thinkphp/" cgid="63">ThinkPHP</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/laravel/" cgid="63">Laravel</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/wordpress/" cgid="63">WordPress</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/phalcon/" cgid="63">Phalcon</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/apachedev/" cgid="63">Apache</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/facebookhack/" cgid="63">Facebook Hack</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/nodedotjs/" cgid="13">Node.js</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/nodejs/" cgid="63">Node.js 基础</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/express/" cgid="63">express</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/meteor/" cgid="63">Meteor</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/hexo/" cgid="63">Hexo</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/aspdotnet/" cgid="13">ASP.NET</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/csharpdev/" cgid="63">C#</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/mvc/" cgid="63">ASP.NET MVC</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/entity/" cgid="63">Entity Framework</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/wpf/" cgid="63">WPF</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/j2ee/" cgid="13">J2EE</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/jsp/" cgid="63">JSP</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/maven/" cgid="63">Maven</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/spring/" cgid="63">Spring</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/springmvc/" cgid="63">SpringMVC</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/struts2/" cgid="63">Struts2</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/mybatis/" cgid="63">MyBatis</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/hibernate/" cgid="63">Hibernate</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/lucene/" cgid="63">Lucene</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/j2eeframe/" cgid="63">常用框架</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/j2eepractice/" cgid="63">项目实战</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/ruby/" cgid="13">Ruby</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/rubybase/" cgid="63">Ruby 基础</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/rails/" cgid="63">Ruby on Rails</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/grape/" cgid="63">Grape</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/rubyadvanced/" cgid="63">Ruby进阶</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/rubymine/" cgid="63">RubyMine</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/go/" cgid="13">Go</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/gobase/" cgid="63">Go 基础</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/beego/" cgid="63">beego</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/erlang/" cgid="13">Erlang</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/erlangbase/" cgid="63">Erlang 基础</a>
+
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</li>
+<li>
+    <div>
+        <a cgid="1" href="http://wenda.jikexueyuan.com/lists/base/">基础知识</a>
+        <div class="lesson-list-show" style="width: 401px; min-height: 410px;">
+            <div style="width: 400px;">
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/baselang/" cgid="13">基础语言</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/c/" cgid="63">C</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/cpp/" cgid="63">C++</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/oc/" cgid="63">Objective-C</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/swift/" cgid="63">Swift</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/csharp/" cgid="63">C#</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/java/" cgid="63">Java</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/perl/" cgid="63">Perl</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/shell/" cgid="63">Shell</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/qt/" cgid="63">Qt</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/scala/" cgid="63">Scala</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/computer/" cgid="13">计算机基础</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/theory/" cgid="63">计算机组成原理</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/network/" cgid="63">网络工程</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/word/" cgid="63">Word</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/excel/" cgid="63">Excel</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/ppt/" cgid="63">PowerPoint</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/devbase/" cgid="13">开发基础</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/count/" cgid="63">算法基础</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/figure/" cgid="63">数据结构</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/model/" cgid="63">设计模式</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/software/" cgid="63">软件工程</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/devtools/" cgid="13">开发工具</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/git/" cgid="63">Git/Github</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/svn/" cgid="63">SVN</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/vi/" cgid="63">VI</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/devstd/" cgid="13">开放标准</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/opencl/" cgid="63">OpenCL</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/xml/" cgid="63">Open XML</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/gles/" cgid="63">OpenGL/GLES</a>
+
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</li>
+<li>
+    <div>
+        <a cgid="1" href="http://wenda.jikexueyuan.com/lists/clouddata/">云计算&大数据</a>
+        <div class="lesson-list-show" style="width: 401px; min-height: 410px;">
+            <div style="width: 400px;">
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/cloudcompute/" cgid="13">云计算</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/openstack/" cgid="63">OpenStack</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/docker/" cgid="63">Docker</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/cloudstack/" cgid="63">CloudStack</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/windowsazure/" cgid="63">Windows Azure</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/Iaas/" cgid="63">IaaS</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/bigdata/" cgid="13">大数据</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/hadoop/" cgid="63">Hadoop</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/storm/" cgid="63">Storm</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/hive/" cgid="63">Hive</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/flume/" cgid="63">Flume</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/kafka/" cgid="63">Kafka</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/zookeeper/" cgid="63">Zookeeper</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/hbase/" cgid="63">Hbase</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/spark/" cgid="63">Spark</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/Informationretrieval/" cgid="63">信息检索</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/dataanalysis/" cgid="63">数据分析</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/virtual/" cgid="13">虚拟化</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/vmware/" cgid="63">VMware</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/cloudplatform/" cgid="13">云平台</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/tencent/" cgid="63">腾讯云</a>
+
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</li>
+<li>
+    <div>
+        <a cgid="1" href="http://wenda.jikexueyuan.com/lists/intellegence/">智能硬件&物联网</a>
+        <div class="lesson-list-show" style="width: 401px; min-height: 410px;">
+            <div style="width: 400px;">
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/hardware/" cgid="13">硬件架构</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/c51/" cgid="63">C51</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/armframe/" cgid="63">ARM</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/keil/" cgid="63">Keil</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/cortex-m/" cgid="63">Cortex-M</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/cortex-a/" cgid="63">Cortex-A</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/avr/" cgid="63">AVR</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/iot/" cgid="13">物联网操作系统</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/rtos/" cgid="63">RTOS</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/androidwear/" cgid="63">Android Wear</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/applewatchkit/" cgid="63">Apple Watchkit</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/open/" cgid="13">开源硬件平台</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/arduino/" cgid="63">Arduino</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/pibow/" cgid="63">树莓派</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/mbed/" cgid="63">mbed</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/goKit/" cgid="63">GoKit</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/link/" cgid="13">通信链接技术</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/wifi/" cgid="63">无线WiFi</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/tel/" cgid="63">移动通信</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/bluetooth/" cgid="63">蓝牙</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/nfc/" cgid="63">NFC</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/infosense/" cgid="13">信息感知处理技术</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/sensor/" cgid="63">传感器</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/dig/" cgid="63">数据挖掘</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/hci/" cgid="13">人机交互技术</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/asr/" cgid="63">语音识别</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/face/" cgid="63">人脸识别</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/gesture/" cgid="63">手势识别</a>
+
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</li>
+<li>
+    <div>
+        <a cgid="1" href="http://wenda.jikexueyuan.com/lists/db/">数据库</a>
+        <div class="lesson-list-show" style="width: 401px; min-height: 410px;">
+            <div style="width: 400px;">
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/sql/" cgid="13">SQL</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/mysql/" cgid="63">MySQL</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/sqlserver/" cgid="63">SQL Server</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/oracledb/" cgid="63">Oracle</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/sqlite/" cgid="63">SQLite</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/postgresql/" cgid="63">PostgreSQL</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/db2/" cgid="63">DB2</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/nosql/" cgid="13">NoSQL</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/cassandra/" cgid="63">Cassandra</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/redis/" cgid="63">Redis</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/mongoDB/" cgid="63">MongoDB</a>
+
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</li>
+<li>
+    <div>
+        <a cgid="1" href="http://wenda.jikexueyuan.com/lists/certificate/">认证考试</a>
+        <div class="lesson-list-show" style="width: 401px; min-height: 410px;">
+            <div style="width: 400px;">
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/exam/" cgid="13">计算机等级考试</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/first/" cgid="63">一级</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/secc/" cgid="63">二级C</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/secjava/" cgid="63">二级Java</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/seccpp/" cgid="63">二级C++</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/networking/" cgid="63">网络工程师</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/dba/" cgid="63">数据库工程师</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/secure/" cgid="63">信息安全工程师</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/enterprise/" cgid="13">企业认证</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/cisco/" cgid="63">思科认证</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/oracle/" cgid="63">Oracle认证</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/linux/" cgid="63">Linux认证</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/arm/" cgid="63">ARM认证</a>
+
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</li>
+<li>
+    <div>
+        <a cgid="1" href="http://wenda.jikexueyuan.com/lists/enterpriseit/">企业 IT</a>
+        <div class="lesson-list-show" style="width: 401px; min-height: 410px;">
+            <div style="width: 400px;">
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/operation/" cgid="13">运维管理</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/shellmaintain/" cgid="63">Shell</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/auto/" cgid="63">自动化运维</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/nginx/" cgid="63">Nginx</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/apache/" cgid="63">Apache</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/operationmonitor/" cgid="63">运维监控</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/business/" cgid="13">商业智能</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/filemaker/" cgid="63">FileMaker</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/os/" cgid="13">操作系统</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/linuxsys/" cgid="63">Linux</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/windows/" cgid="63">Windows</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/macos/" cgid="63">Mac OS</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/enterpriseservice/" cgid="13">企业服务</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/b2c/" cgid="63">B2C</a>
+
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</li>
+<li>
+    <div>
+        <a cgid="1" href="http://wenda.jikexueyuan.com/lists/productdesign/">设计&产品&测试</a>
+        <div class="lesson-list-show" style="width: 401px; min-height: 410px;">
+            <div style="width: 400px;">
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/designbase/" cgid="13">设计基础</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/photoshop/" cgid="63">Photoshop</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/flash/" cgid="63">Flash</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/illustrator/" cgid="63">Illustrator</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/sketch/" cgid="63">Sketch</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/gamedesign/" cgid="13">游戏设计</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/interface/" cgid="63">界面设计</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/role/" cgid="63">角色设计</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/pm/" cgid="13">产品经理</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/demand/" cgid="63">需求分析</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/axure/" cgid="63">Axure</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/item/" cgid="63">项目实战</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/vd/" cgid="13">视觉设计</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/appui/" cgid="63">应用UI设计</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/webui/" cgid="63">网页UI设计</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/dt/" cgid="63">设计理论</a>
+                        <a href="http://wenda.jikexueyuan.com/lists/gd/" cgid="63">图形设计</a>
+
+                    </dd>
+
+                </dl>
+                <dl>
+                    <dt><a href="http://wenda.jikexueyuan.com/lists/testtools/" cgid="13">测试工具</a></dt>
+                    <dd class="cf">
+                        <a href="http://wenda.jikexueyuan.com/lists/autotest/" cgid="63">自动化测试</a>
+
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</li>
+<li>
+    <div>
+        <a cgid="1" href="http://wenda.jikexueyuan.com">全部分类</a>
+    </div>
+</li>
+</ul>
+<p class="line"></p>
+</div>
+<!-- /分类列表 -->
+</div>
+<!-- <span>
+<a href="javascript:;"></a>
+|
+<a href="javascript:;"></a>
+</span> -->
+</div>
+<div class="qsort-see">
+    <dl>
+        <dt>查看：</dt>
+        <dd><a class="default" href="http://wenda.jikexueyuan.com">默认</a></dd> /
+        <dd><a class="good" rel="nofollow" href="http://wenda.jikexueyuan.com/lists?status=is_good"><i class="icon-diamond"></i>问答精华</a></dd> /
+        <dd><a class="new" rel="nofollow" href="http://wenda.jikexueyuan.com/lists?status=zero">待回复</a></dd> /
+        <dd><a class="new" rel="nofollow" href="http://wenda.jikexueyuan.com/lists?status=new">最新创建</a></dd>
+    </dl>
+</div>
+</div><!-- /wrap -->
+</div>
+
+<!-- /sort -->
+<!-- queslist -->
+<div class="asklist">
+  <ul class="cf">
+    <li class="askstatus">
+        <a class="reply" href="javascript:;">
+            <strong>42</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong class="numSwitch">13.8k</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3>
+        <a href="http://wenda.jikexueyuan.com/question/26076/" target="_blank">
+            【问答技巧】怎样提问才能让我的问题更快速被解答？
+        </a>
+        </h3>
+            <span class="setop">置顶</span>
+        </p>
+        <p class="mark">
+            <span>
+                 <a href="http://my.jikexueyuan.com/shao/" target="_blank"> 极客学院-shao  </a>
+            </span> &middot;
+            <span>
+                <a target="_blank" href="http://www.jikexueyuan.com/course/127.html" >HTML5特性简介</a>
+            </span>
+            &middot;
+            <span>
+                 <a href="http://my.jikexueyuan.com/9895690366/" target="_blank"> robot23    </a>
+                  &middot; 前天 10:24 回答
+            </span>
+        </p>
+    </li>
+  </ul>
+<ul class="cf">
+    <li class="askstatus">
+        <a class="solve" href="javascript:;">
+            <strong>18</strong>
+            <p>解决</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong class="numSwitch">8.3k</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/27538/" target="_blank">Bootstrap 最新版 V4 中文文档</a></h3><span class="setop">置顶</span>
+        </p>
+        <p class="mark">
+                    <span>
+                        <a href="http://my.jikexueyuan.com/cntnn11/" target="_blank">
+                            cntnn11                        </a>
+                    </span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/516.html" >Bootstrap 简介</a></span> &middot;
+            <span>
+                            <a href="http://my.jikexueyuan.com/9895690366/" target="_blank">
+                                robot23                              </a>
+                &middot; 前天 10:34 回答
+                        </span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+    <li class="askstatus">
+        <a class="reply" href="javascript:;">
+            <strong>1</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong class="numSwitch">1.8k</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/28716/" target="_blank">【老师分享】对LPS的Manacher算法感兴趣的同学请参考以下解法。</a></h3><span class="setop">置顶</span>
+        </p>
+        <p class="mark">
+                    <span>
+                        <a href="http://my.jikexueyuan.com/subvoid/" target="_blank">
+                            subVoid                        </a>
+                    </span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/2142.html" >神奇的回文</a></span> &middot;
+            <span>
+                            <a href="http://my.jikexueyuan.com/dream/" target="_blank">
+                                任亚楠                              </a>
+                &middot; 10月23日 回答
+                        </span>
+        </p>
+    </li>
+</ul>
+
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="reply" href="javascript:;">
+            <strong>3</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>311</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/27485/" target="_blank">编译好的文件怎么配置？</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/4509582858/" target="_blank">
+                        jike_shweiv66                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/512.html" >JSP编译指令和动作指令</a></span> &middot;
+            <span>
+                        <a href="http://my.jikexueyuan.com/8834168413/" target="_blank">
+                            jike_7174575                         </a>
+                &middot; 6小时前 回答
+                    </span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="noreply" href="javascript:;">
+            <strong>0</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>4</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32220/" target="_blank">在浏览器中显示汉字为？？？</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/7108479469/" target="_blank">
+                        jike_9807251                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/457.html" >PHP 与 MySQL</a></span> &middot;
+            <span> 8小时前 提问</span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="noreply" href="javascript:;">
+            <strong>0</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>3</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32219/" target="_blank">单设图片left的值没有效果啊</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/4729368155/" target="_blank">
+                        jike_4835563                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/381.html" >HTML5开发项目实战:照片墙</a></span> &middot;
+            <span> 9小时前 提问</span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="noreply" href="javascript:;">
+            <strong>0</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>3</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32218/" target="_blank">IntelliJ IDEA 有没有汉化的安装包</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/3418472827/" target="_blank">
+                        qq_rchxyg29                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/181.html" >HTML5开发前准备</a></span> &middot;
+            <span> 11小时前 提问</span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="noreply" href="javascript:;">
+            <strong>0</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>3</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32217/" target="_blank">Service的作用</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/8900392284/" target="_blank">
+                        xiongmiao                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/683.html" >认识 Android Service</a></span> &middot;
+            <span> 11小时前 提问</span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="noreply" href="javascript:;">
+            <strong>0</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>3</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32216/" target="_blank">请问这几个插件有链接吗？百度搜索出来的，网页进不去</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/6153758964/" target="_blank">
+                        唯一的可林                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/929.html" >React 概述</a></span> &middot;
+            <span> 11小时前 提问</span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="reply" href="javascript:;">
+            <strong>2</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>162</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/11941/" target="_blank">连接数据库问题</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/4298800269/" target="_blank">
+                        wangwei5197                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/436.html" >Asp.Net MVC的Model、View与Controller</a></span> &middot;
+            <span>
+                        <a href="http://my.jikexueyuan.com/474443956/" target="_blank">
+                            zj374488168                         </a>
+                &middot; 12小时前 回答
+                    </span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="noreply" href="javascript:;">
+            <strong>0</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>3</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32215/" target="_blank">系统找不到指定的文件</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/474443956/" target="_blank">
+                        zj374488168                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/436.html" >Asp.Net MVC的Model、View与Controller</a></span> &middot;
+            <span> 12小时前 提问</span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="reply" href="javascript:;">
+            <strong>6</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>49</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32210/" target="_blank">怎么进入网站</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/6153758964/" target="_blank">
+                        唯一的可林                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/636.html" >Android 集成开发环境搭建</a></span> &middot;
+            <span>
+                        <a href="http://my.jikexueyuan.com/6153758964/" target="_blank">
+                            唯一的可林                         </a>
+                &middot; 12小时前 回答
+                    </span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="reply" href="javascript:;">
+            <strong>1</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>17</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32214/" target="_blank">听糊涂了</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/murongyuhao/" target="_blank">
+                        murongyuhao                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/737.html" >Spring IoC 容器深入理解</a></span> &middot;
+            <span>
+                        <a href="http://my.jikexueyuan.com/5582280784/" target="_blank">
+                            番茄_jk                         </a>
+                &middot; 13小时前 回答
+                    </span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="reply" href="javascript:;">
+            <strong>5</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>74</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/31531/" target="_blank">讲的好乱啊，能不能别把简单的讲这么复杂</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/4408428811/" target="_blank">
+                        qq_上上签                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/981.html" >CSS 经典布局之双飞翼布局</a></span> &middot;
+            <span>
+                        <a href="http://my.jikexueyuan.com/4408428811/" target="_blank">
+                            qq_上上签                         </a>
+                &middot; 15小时前 回答
+                    </span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="noreply" href="javascript:;">
+            <strong>0</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>34</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32213/" target="_blank">如何动态构建一个lambda表达式</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/2218865245/" target="_blank">
+                        315561125                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/767.html" >Entity Framework 的 Model First 模式和模式选择</a></span> &middot;
+            <span> 15小时前 提问</span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="noreply" href="javascript:;">
+            <strong>0</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>25</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32212/" target="_blank">iterator中remove的作用</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/6761707119/" target="_blank">
+                        jike_8847987                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/141.html" >Java集合类详解</a></span> &middot;
+            <span> 15小时前 提问</span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="noreply" href="javascript:;">
+            <strong>0</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>28</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32211/" target="_blank">事务只能使用一次吗？</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/9762699951/" target="_blank">
+                        pkl6612                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/1491.html" >HTML5 indexedDB数据库索引</a></span> &middot;
+            <span> 16小时前 提问</span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+    <li class="askstatus">
+        <a class="solve" href="javascript:;">
+            <strong>2</strong>
+            <p>解决</p>
+        </a>
+    </li>
+
+    <li class="askpv">
+        <div>
+            <strong>39</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32187/" target="_blank">老师讲解到Orion页面部分，视频8min47min后，工程出现了老师视频中未介绍的变化，不过资料中提供了代码。</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/1488224090/" target="_blank">
+                        zhuqiuyang                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/2386.html" >Meteor 十分钟开发 CMS 系统（上）</a></span> &middot;
+            <span>
+                        <a href="http://my.jikexueyuan.com/1488224090/" target="_blank">
+                            zhuqiuyang                         </a>
+                &middot; 16小时前 回答
+                    </span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="reply" href="javascript:;">
+            <strong>1</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>33</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32184/" target="_blank">从mongoDB 中获取数据后，如何遍历获取数据里面的相关Object？</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/zilu/" target="_blank">
+                        qq_izjfd3ty                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/2044.html" >Meteor 集合</a></span> &middot;
+            <span>
+                        <a href="http://my.jikexueyuan.com/dragonszy/" target="_blank">
+                            dragonszy                         </a>
+                &middot; 16小时前 回答
+                    </span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="noreply" href="javascript:;">
+            <strong>0</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>29</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32209/" target="_blank">这个华容道 在编译成安卓的时候出现个问题</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/3610690930/" target="_blank">
+                        jike_i50jlu2k                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/1508.html" >Cocos2d-x小小华容道益智游戏开发实战(上)</a></span> &middot;
+            <span> 17小时前 提问</span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="reply" href="javascript:;">
+            <strong>8</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>760</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/28125/" target="_blank">按照老师的教学视频自己做的WebView是空白的，找不到哪里出错了</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/8971516718/" target="_blank">
+                        459745355                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/119.html" >iOS用户界面开发基本流程</a></span> &middot;
+            <span>
+                        <a href="http://my.jikexueyuan.com/378597281/" target="_blank">
+                            yinming0305                         </a>
+                &middot; 17小时前 回答
+                    </span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="noreply" href="javascript:;">
+            <strong>0</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>27</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32208/" target="_blank">变小</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/jasyle/" target="_blank">
+                        qq_Mr.靠谱                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/939.html" >Android 项目开发实战：头像上传</a></span> &middot;
+            <span> 18小时前 提问</span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="noreply" href="javascript:;">
+            <strong>0</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>26</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32207/" target="_blank">老师，请问能不能分享下php的代码呢</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/7128567215/" target="_blank">
+                        jike_1003560                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/420.html" >Android 扫描二维码实现网页登录</a></span> &middot;
+            <span> 18小时前 提问</span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="noreply" href="javascript:;">
+            <strong>0</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>28</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32206/" target="_blank">老师，请问为什么JavaScript代码要写在body的下面呢</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/7128567215/" target="_blank">
+                        jike_1003560                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/420.html" >Android 扫描二维码实现网页登录</a></span> &middot;
+            <span> 18小时前 提问</span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="noreply" href="javascript:;">
+            <strong>0</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>26</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32205/" target="_blank">老师，请问为什么我执行这段代码显示空白  &lt;html&gt;  &lt;head&gt;  &lt;meta charset="utf-8" /&gt;  &lt;title&gt;&lt;/title&gt;  &lt;/head&gt;  &lt;body&gt;  &lt;!--&lt;?php  require 'mysql_conn.php';  for($i = 0;$i &lt; 8;$i++){  $randnumber.=$i;  }  mysql_query("insert in</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/7128567215/" target="_blank">
+                        jike_1003560                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/420.html" >Android 扫描二维码实现网页登录</a></span> &middot;
+            <span> 18小时前 提问</span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="reply" href="javascript:;">
+            <strong>4</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>2.1k</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/24511/" target="_blank">重新安装XAMPP后apache 和 mysql 都可以启动，但是admin 页面都是空白页是什么问题呢？</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/5983074849/" target="_blank">
+                        ReikyZ                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/377.html" >PHP 开发环境搭建</a></span> &middot;
+            <span>
+                        <a href="http://my.jikexueyuan.com/silencezq/" target="_blank">
+                            青芦之上                         </a>
+                &middot; 19小时前 回答
+                    </span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="noreply" href="javascript:;">
+            <strong>0</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>26</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32204/" target="_blank">老师，请问我的这个php获得二维码的代码没有反应呢  &lt;html&gt;  &lt;head&gt;  &lt;meta charset="utf-8" /&gt;  &lt;title&gt;&lt;/title&gt;  &lt;/head&gt;  &lt;body&gt;  &lt;?php  require 'mysql_conn.php';  for($i = 0;$i &lt; 8;$i++){  $randnumber.=$i;  }  mysql_query("insert int</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/7128567215/" target="_blank">
+                        jike_1003560                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/420.html" >Android 扫描二维码实现网页登录</a></span> &middot;
+            <span> 19小时前 提问</span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="noreply" href="javascript:;">
+            <strong>0</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>31</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32203/" target="_blank">输入命令报错</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/3449171792/" target="_blank">
+                        qq_jeorcal4                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/1525.html" >安装和配置认证服务 KeyStone</a></span> &middot;
+            <span> 19小时前 提问</span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="noreply" href="javascript:;">
+            <strong>0</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>26</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32202/" target="_blank">这个听得一直想睡觉，。。。好烂</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/7629089194/" target="_blank">
+                        qq_bx2n3psr                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/2038.html" >AJAX 基础</a></span> &middot;
+            <span> 19小时前 提问</span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="reply" href="javascript:;">
+            <strong>11</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>97</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/31608/" target="_blank">gem install bundler 安装出错</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/nus/" target="_blank">
+                        桦笙                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/887.html" >Octopress 搭建静态博客网站</a></span> &middot;
+            <span>
+                        <a href="http://my.jikexueyuan.com/2333356720/" target="_blank">
+                            lifeipeng                         </a>
+                &middot; 19小时前 回答
+                    </span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+    <li class="askstatus">
+        <a class="solve" href="javascript:;">
+            <strong>3</strong>
+            <p>解决</p>
+        </a>
+    </li>
+
+    <li class="askpv">
+        <div>
+            <strong>41</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/32127/" target="_blank">关于render.clear()</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/6721079211/" target="_blank">
+                        jike_3517606                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/2168.html" >WebGL Three.js 几何体</a></span> &middot;
+            <span>
+                        <a href="http://my.jikexueyuan.com/6721079211/" target="_blank">
+                            jike_3517606                         </a>
+                &middot; 19小时前 回答
+                    </span>
+        </p>
+    </li>
+</ul>
+<ul class="cf">
+
+    <li class="askstatus">
+        <a class="reply" href="javascript:;">
+            <strong>2</strong>
+            <p>回答</p>
+        </a>
+    </li>
+    <li class="askpv">
+        <div>
+            <strong>43</strong>
+            <p>浏览</p>
+        </div>
+    </li>
+    <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/31945/" target="_blank">关于二位图形三角形显示</a></h3>
+        </p>
+        <p class="mark">
+				<span>
+                    <a href="http://my.jikexueyuan.com/6721079211/" target="_blank">
+                        jike_3517606                    </a>
+				</span> &middot;
+            <span><a target="_blank" href="http://www.jikexueyuan.com/course/2168.html" >WebGL Three.js 几何体</a></span> &middot;
+            <span>
+                        <a href="http://my.jikexueyuan.com/6721079211/" target="_blank">
+                            jike_3517606                         </a>
+                &middot; 20小时前 回答
+                    </span>
+        </p>
+    </li>
+</ul>
+
+  <ul class="cf">
+
+     <li class="askstatus">
+        <a class="reply" href="javascript:;">
+            <strong>2</strong>
+            <p>回答</p>
+        </a>
+     </li>
+     <li class="askpv">
+        <div>
+            <strong>49</strong>
+            <p>浏览</p>
+        </div>
+     </li>
+     <li class="asktit">
+        <p class="caption cf">
+        <h3><a href="http://wenda.jikexueyuan.com/question/31924/" target="_blank">关于OrbitControls.js</a></h3>
+        </p>
+        <p class="mark">
+		    <span>
+                 <a href="http://my.jikexueyuan.com/6721079211/" target="_blank">jike_3517606 </a>
+		    </span>
+            &middot;
+            <span>
+                <a target="_blank" href="http://www.jikexueyuan.com/course/2190.html" >WebGL Three.js 动画和相机</a>
+            </span>
+            &middot;
+            <span>
+                 <a href="http://my.jikexueyuan.com/6721079211/" target="_blank">  jike_3517606  </a>
+                 &middot; 20小时前 回答
+            </span>
+        </p>
+     </li>
+  </ul>
+
+  <div id="page-nav">
+      <a class='prev last no'>上一页</a>
+       &nbsp;<a class='on' href='javascript:;'>1</a>
+       &nbsp;<a  href='/lists?page=2'>2</a>
+       &nbsp;<a  href='/lists?page=3'>3</a>
+       &nbsp;<a>...</a>
+       &nbsp;<a  href='/lists?page=646'>646</a>
+       <a class='next' href='/lists?page=2'>
+            <span><em>下一页</em></span>
+       </a>
+       <span class='gopage'>
+           <form method='get' action='/lists'>去第
+                 <input name='page' type='text' class='page_text' min='1' max='100000' size='5' maxlength='5' value='1'/>页
+                 <button>确定</button>
+           </form>
+       </span>
+       <div class="show-item">
+          <span>每页显示</span>
+          <dl>
+            <dt>
+                 <span class="">30</span>
+                 <i class="arrow"></i>
+            </dt>
+            <dd>
+               <p class=""><a href="http://wenda.jikexueyuan.com/lists/?page=1&listRows=30">30</a></p>
+               <p class=""><a href="http://wenda.jikexueyuan.com/lists/?page=1&listRows=60">60</a></p>
+               <p class=""><a href="http://wenda.jikexueyuan.com/lists/?page=1&listRows=90">90</a></p>
+            </dd>
+          </dl>
+       </div>
+  </div>
+
+</div>
+</div>
+<!-- /main -->
+<!-- sidebar -->
+<div id="sidebar">
+    <div class="overview-que home-side1">
+        <h2>让每一个问题都被解决</h2>
+        <ul>
+            <li>
+                <span>问题总数:</span>
+                <strong class="color-red">19379</strong>
+            </li>
+            <li>
+                <span>已解决:</span>
+                <strong class="color-green">19333</strong>
+                <em>99.8%</em>
+            </li>
+
+            <li>
+                <span>待回复:</span>
+                <strong>46 </strong>
+                <em>0.2%</em>
+            </li>
+        </ul>
+    </div>
+
+    <div class="hot-que home-side3">
+        <h2>热门问答</h2>
+        <ul>
+            <li>
+                <a href="http://www.jikexueyuan.com/course/127.html" target="_blank"><img src="http://a1.jikexueyuan.com/home/201411/03/171a/54578ddd8e62a.png" alt="" /></a>
+                <a href="/question/26076/" target="_blank">【问答技巧】怎样提问才能让我的问题更快速被解答？</a>
+            </li>
+            <li>
+                <a href="http://www.jikexueyuan.com/course/516.html" target="_blank"><img src="http://a1.jikexueyuan.com/home/201502/26/c2a9/54eeb7cba8791.png" alt="" /></a>
+                <a href="/question/27538/" target="_blank">Bootstrap 最新版 V4 中文文档</a>
+            </li>
+            <li>
+                <a href="http://www.jikexueyuan.com/course/2142.html" target="_blank"><img src="http://wirrorcdn.jikexueyuan.com/category/devbase.png" alt="" /></a>
+                <a href="/question/28716/" target="_blank">【老师分享】对LPS的Manacher算法感兴趣的同学请参考...</a>
+            </li>
+            <li>
+                <a href="http://www.jikexueyuan.com/course/38.html" target="_blank"><img src="http://wirrorcdn.jikexueyuan.com/category/games.png" alt="" /></a>
+                <a href="/question/846/" target="_blank">请问如何下载视频</a>
+            </li>
+            <li>
+                <a href="http://www.jikexueyuan.com/course/651.html" target="_blank"><img src="http://a1.jikexueyuan.com/home/201411/03/00a1/54578d8e652c3.png" alt="" /></a>
+                <a href="/question/29925/" target="_blank">现在新建android项目，layout下面有个conten...</a>
+            </li>
+            <li>
+                <a href="http://www.jikexueyuan.com/course/250.html" target="_blank"><img src="http://a1.jikexueyuan.com/home/201411/03/00a1/54578d8e652c3.png" alt="" /></a>
+                <a href="/question/31840/" target="_blank">不同fragment实现不同的功能</a>
+            </li>
+            <li>
+                <a href="http://www.jikexueyuan.com/course/37.html" target="_blank"><img src="http://wirrorcdn.jikexueyuan.com/category/games.png" alt="" /></a>
+                <a href="/question/10726/" target="_blank">build_native.py时报错</a>
+            </li>
+            <li>
+                <a href="http://www.jikexueyuan.com/course/5.html" target="_blank"><img src="http://wirrorcdn.jikexueyuan.com/category/mobile.png" alt="" /></a>
+                <a href="/question/372/" target="_blank">超级菜鸟想成为怎么成长？</a>
+            </li>
+            <li>
+                <a href="http://www.jikexueyuan.com/course/524.html" target="_blank"><img src="http://a1.jikexueyuan.com/home/201502/26/c2a9/54eeb7cba8791.png" alt="" /></a>
+                <a href="/question/8967/" target="_blank">老师，如何用Bootstrap布局一个垂直水平居中，没思路呀</a>
+            </li>
+            <li>
+                <a href="http://www.jikexueyuan.com/course/396.html" target="_blank"><img src="http://a1.jikexueyuan.com/home/201411/03/00a1/54578d8e652c3.png" alt="" /></a>
+                <a href="/question/7453/" target="_blank">Android Studio启动不了虚拟机</a>
+            </li>
+        </ul>
+    </div>
+    <!-- 问答帮帮团 -->
+    <div class="recommend-member home-side4">
+        <h2><strong>问答帮帮团</strong> <a href="/helpgroup/apply">加入帮帮团</a></h2>
+        <div class="show-area">
+            <div class="unit">
+                <a href="http://my.jikexueyuan.com/sid/" target="_blank">
+                    <img src="http://assets.jikexueyuan.com/user/avtar/avatar_2971624.jpg" alt="陈世帝"/>
+                    <p>陈世帝</p>
+                </a>
+            </div>
+            <div class="unit">
+                <a href="http://my.jikexueyuan.com/cntnn11/" target="_blank">
+                    <img src="http://assets.jikexueyuan.com/user/avtar/avatar_1267165.jpg" alt="谭宁"/>
+                    <p>谭宁</p>
+                </a>
+            </div>
+            <div class="unit">
+                <a href="http://my.jikexueyuan.com/cxfsunshine/" target="_blank">
+                    <img src="http://assets.jikexueyuan.com/user/avtar/201511/12/04/3cbink1u9fuos.jpeg" alt="柴雪飞"/>
+                    <p>柴雪飞</p>
+                </a>
+            </div>
+            <div class="unit">
+                <a href="http://my.jikexueyuan.com/5582280784/" target="_blank">
+                    <img src="http://assets.jikexueyuan.com/user/avtar/201511/04/04/2jsvwgg12ig4o.jpeg" alt="范琪"/>
+                    <p>范琪</p>
+                </a>
+            </div>
+            <div class="unit">
+                <a href="http://my.jikexueyuan.com/4473324370/" target="_blank">
+                    <img src="http://assets.jikexueyuan.com/user/avtar/default.gif" alt="刘畅"/>
+                    <p>刘畅</p>
+                </a>
+            </div>
+            <div class="unit">
+                <a href="http://my.jikexueyuan.com/2808432355/" target="_blank">
+                    <img src="http://assets.jikexueyuan.com/user/avtar/default.gif" alt="何斌"/>
+                    <p>何斌</p>
+                </a>
+            </div>
+            <div class="unit">
+                <a href="http://my.jikexueyuan.com/weixuan/" target="_blank">
+                    <img src="http://assets.jikexueyuan.com/user/avtar/2726659.jpeg" alt="韦轩"/>
+                    <p>韦轩</p>
+                </a>
+            </div>
+            <div class="unit">
+                <a href="http://my.jikexueyuan.com/4444677443/" target="_blank">
+                    <img src="http://assets.jikexueyuan.com/user/avtar/default.gif" alt="Return"/>
+                    <p>Return</p>
+                </a>
+            </div>
+            <div class="unit">
+                <a href="http://my.jikexueyuan.com/6600456136/" target="_blank">
+                    <img src="http://assets.jikexueyuan.com/user/avtar/avatar_2554734.jpg" alt="张帅刚"/>
+                    <p>张帅刚</p>
+                </a>
+            </div>
+            <div class="unit">
+                <a href="http://my.jikexueyuan.com/9983857896/" target="_blank">
+                    <img src="http://assets.jikexueyuan.com//share/jkxy_public/www/Data/Attachments/user/avtar/999163.jpeg" alt="vatty"/>
+                    <p>vatty</p>
+                </a>
+            </div>
+            <div class="unit">
+                <a href="http://my.jikexueyuan.com/7133658036/" target="_blank">
+                    <img src="http://assets.jikexueyuan.com/user/avtar/default.gif" alt="王永平"/>
+                    <p>王永平</p>
+                </a>
+            </div>
+            <div class="unit">
+                <a href="http://my.jikexueyuan.com/8308934380/" target="_blank">
+                    <img src="http://assets.jikexueyuan.com/user/avtar/default.gif" alt="老钱"/>
+                    <p>老钱</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /sidebar -->
+</section>
+
+
+
+<!--弹窗-->
+<script src="http://wenda.jikexueyuan.com/home/static/js/plugin/popup/jquery.popupshow.js"></script>
+<!--</script>-->
+
+
+<script src="http://wenda.jikexueyuan.com/home/static/js/ques.common.js"></script>
+<script src="http://wenda.jikexueyuan.com/home/static/js/rightModel.js"></script>
+<script src="http://wenda.jikexueyuan.com/home/static/js/leftnav.js"></script>
+<!-- /container -->
+</div>
+</body>
+</html>
+{% endblock %}
+
+

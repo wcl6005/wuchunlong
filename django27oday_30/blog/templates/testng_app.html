@@ -1,0 +1,53 @@
+<!--
+问题：
+1、更新"/static/oday/php/dbfile.php"文件后，不能立即响应。
+-->
+{% extends '__testng_app__.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+   <meta  content="text/html; charset=UTF-8" />
+   <script src="/static/angularjsfile/js/angular.min.js"></script>
+</head>
+
+
+<body  ng-app="myApp" ng-controller="myCtrl">
+
+
+<div ng-init='q = "{{ q }}" '></div>
+后台 q:{{ q }} </br>
+{% verbatim %}
+<button ng-click="testclick()">调用函数</button>
+
+{{ count }}
+<div  ng-repeat='friend in  PlayLessons| filter: q   as searchs '>    </div>
+AngularJS q:{{ q }} </br>
+
+        searchs:{{ searchs }}
+
+        <script>
+            var app = angular.module('myApp', []);
+            app.controller('myCtrl', function($scope, $http) {
+                $http.get("/static/oday/php/dbfile.php").success(function (response) {$scope.PlayLessons = response.records;});
+                //这里可以添加函数或变量
+                $scope.count = 10;
+                $scope.firstName ='hello world!';
+                $scope.testclick = function() {
+                    alert($scope.PlayLessons[0]['filename1'])      };
+            });
+        </script>
+
+
+     <!--调用函数的值PlayLessons-->
+
+
+    {% endverbatim %}
+
+</body>
+ </html>
+
+{% endblock %}
+
+
+

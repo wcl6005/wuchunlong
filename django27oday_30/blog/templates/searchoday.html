@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    {% load staticfiles %}
+
+    <meta charset="utf-8">
+    <title> a - 搜索课程    - 好的学院</title>
+
+
+    <link href="{% static "oday/css/public.css" %}" rel="stylesheet">
+    <link href="{% static "oday/css/course.css" %}" rel="stylesheet">
+
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+
+</head>
+
+<body>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope, $http) {
+        $http.get("/static/oday/php/dbfile4.php").success(function (response) {$scope.PlayLessons = response.records;});
+        $http.get("/static/oday/php/NewtableLessonListFnames.php").success(function (response) {$scope.PlayLessonLists = response.records;});
+        $scope.searchoday='searchoday.html';
+    });
+</script>
+
+
+<!--后台传来，供AngularJS使用-->
+<div ng-init='q = "{{ q }}" '></div>
+
+<div  ng-repeat='friend in  PlayLessons| filter:q  as searchs '>    </div>
+{% verbatim %}
+<!------------------------------------------------>
+<div ng-app="myApp" ng-controller="myCtrl">
+<div id="pager">
+ <div class="w-1000 mar-t20 cf">
+    <div class="leftarea">
+
+              <div class="tab">
+                <a class="active" href="javascript:;">课程 <span class="count">{{search.lessonssum  }}</span></a>
+                <a href="http://search.jikexueyuan.com/wenda?q=a">问答 <span class="count">2487</span></a>
+                <a href="http://search.jikexueyuan.com/wiki?q=a">Wiki <span class="count">3185</span></a>
+               </div>
+
+      <ul>
+
+
+         <!-- angularJS产生循环-->
+         <div ng-repeat="search in searchs">
+
+             <li class="course">
+
+                        <div class="course-content">
+                            <!--课缩位图-->
+                            <img class="image" src={{search.lessonsimg}} alt="" width="185" height="100"/>
+                            <a  href="http://localhost:8000/blog/PlayVideoOady/?filename={{search.filename1 }}&id={{ search.id }}">
+                            <div class="lessonplay" style="opacity: 0;">
+                                  <i class="playericon"></i>
+                               </div>
+                             </a>
+
+
+                             <!--信息-->
+                             <div class="info">
+                                 <!--调用网页  并传值文件名给网页  课简介 -->
+                                 <a  href="http://localhost:8000/blog/PlayVideoOady/?filename={{search.filename1 }}&id={{ search.id }}">
+                                 <!--文件名-->
+                                       <div class="title">{{search.fname1}}</div></a>
+                                 </a>
+                                 <div class="description">
+                                   {{ search.description1 }}
+                                 </div>
+
+                                 <div class="study_info">
+                                     <a  href="http://localhost:8000/blog/PlayVideoOady/?filename={{search.filename1 }}&id={{ search.id }}">
+                                     <span class="s_info_one">{{ search.teacher }}</span>
+                                     </a>
+                                     <span class="s_info_two"> {{ search.timesum }}分钟</span>
+                                     <span class="s_info_three">{{ search.numbersum }}人学习</span>
+                                 </div>
+                            </div>
+                        </div>
+
+                 <div ng-repeat="PlayLessonList in PlayLessonLists">
+                     <div ng-if=" search.id  == PlayLessonList.id  ">
+                        <!--概要-->
+                        <dl class="lesson">
+                           <dd class="lesson-content cf">
+                               <i>{{ PlayLessonList.numbering }}</i>
+                               <div class="info">
+                                    <span class="time"> {{ PlayLessonList.time }}分钟</span>
+                                    <a  href="http://localhost:8000/blog/PlayVideoOady/?filename={{ PlayLessonList.filename }}&id={{ PlayLessonList.id }}">
+                                       <div class="title">
+                                          {{PlayLessonList.fname}}
+
+                                          概要
+                                       </div>
+                                    </a>
+                                    <div class="description">
+                                        {{PlayLessonList.description }}
+                                    </div>
+                               </div>
+                           </dd>
+                        </dl>
+
+                 </div>
+                 </div>
+                    </li>
+
+
+           </div>
+
+                <li class="course">
+                    <div class="course-content">
+                        <img class="image" src="http://a1.jikexueyuan.com/home/201407/31/4b3b/53da0c4c46c79.jpg" alt="" width="185" height="100"/>
+                        <a target="_blank" href="http://www.jikexueyuan.com/course/166.html">
+                            <div class="lessonplay" style="opacity: 0;">
+                                <i class="playericon"></i>
+                            </div>
+                        </a>
+                        <div class="info">
+                            <a target="_blank" href="http://www.jikexueyuan.com/course/166.html">
+                                <div class="title">J<em>a</em>v<em>a</em>异常处理</div></a>
+                            <div class="description">本课讲解异常的处理、异常的概念、出现异常之后如何快速处理掉。</div>
+                            <div class="study_info"><a target="_blank" href="http://my.jikexueyuan.com/iwen/record/"><span class="s_info_one">iwen</span></a><span class="s_info_two">5课时 20分钟</span><span class="s_info_three">17.6K人学习</span></div>
+                        </div>
+                    </div>
+                    <dl class="lesson">
+                        <dd class="lesson-content cf">
+                            <i>1</i>
+                            <div class="info">
+                                <span class="time">05:57</span>
+                                <a target="_blank" href="http://www.jikexueyuan.com/course/166_1.html"><div class="title">J<em>a</em>v<em>a</em>异常处理－捕获异常</div></a>
+                                <div class="description"><em>a</em>)了解异常
+                                    b)捕获异常
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+
+                <li class="course">
+                    <div class="course-content">
+                        <img class="image" src="http://a1.jikexueyuan.com/home/201509/25/8e3d/5604a526ec605.jpg" alt="" width="185" height="100"/>
+                        <a target="_blank" href="http://www.jikexueyuan.com/course/2070.html">
+                            <div class="lessonplay" style="opacity: 0;">
+                                <i class="playericon"></i>
+                            </div>
+                        </a>
+                        <div class="info">
+                            <a target="_blank" href="http://www.jikexueyuan.com/course/2070.html"><div class="title">Windows 10 应用开发之布局控件</div></a>
+                            <div class="description">在前面的课程中，学员已经学习了如何处理页面与页面之间的关系（导航），而具体到单个页面中，就要涉及到用户界面排版的问题了。布局控件可以描述用户界面的基本轮廓（比如左上角放什么内容，页面底部用于显示什么视图等），以方便后续的界面设计工作的开展。本课程将讲述常用的布局控件，包括 Grid、C<em>a</em>nv<em>a</em>s 、St<em>a</em>ckP<em>a</em>nel，以及新增的 Rel<em>a</em>tiveP<em>a</em>nel 控件。</div>
+                            <div class="study_info"><a target="_blank" href="http://my.jikexueyuan.com/1795437896/record/"><span class="s_info_one">周家安</span></a><span class="s_info_two">8课时 48分钟</span><span class="s_info_three">2507人学习</span></div>
+                        </div>
+                    </div>
+                    <dl class="lesson">
+                        <dd class="lesson-content cf">
+                            <i>6</i>
+                            <div class="info">
+                                <span class="time">05:02</span>
+                                <a target="_blank" href="http://www.jikexueyuan.com/course/2070_6.html"><div class="title">边距</div></a>
+                                <div class="description">本课时介绍边距可以分为内边距和外边距，这种划分方式只是相对于可视化元素本身而言的。例如，<em>A</em> 元素与父元素边沿的距离为外边距；而 <em>A</em> 元素与它内部子元素之间的距离即为内边距。</div>
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+             </ul>
+        </div>
+
+        <div class="rightarea">
+            <div class="block">
+                <div class="title">大家都在搜</div>
+                <ul class="search">
+                    <a href="?q=rest"><li>rest</li></a>
+                    <a href="?q=mfc"><li>mfc</li></a>
+                    <a href="?q=uml"><li>uml</li></a>
+                    <a href="?q=jvm"><li>jvm</li></a>
+                    <a href="?q=vim"><li>vim</li></a>
+                    <a href="?q=vba"><li>vba</li></a>
+                    <a href="?q=ae"><li>ae</li></a>
+                    <a href="?q=adb"><li>adb</li></a>
+                    <a href="?q=vr"><li>vr</li></a>
+                    <a href="?q=qq"><li>qq</li></a>
+                </ul>
+            </div>
+            <div class="block">
+                <div class="title">热门课程</div>
+                <ul class="hot">
+                    <a target="_blank" href="http://www.jikexueyuan.com/course/78.html"><li>Java编程基础知识入门:变量与数据类型</li></a>
+                    <a target="_blank" href="http://www.jikexueyuan.com/course/2531.html"><li>Android Studio 全方位指南之初识 Android Studio</li></a>
+                    <a target="_blank" href="http://www.jikexueyuan.com/course/651.html"><li>认识 Android 中的 Activity 组件</li></a>
+                    <a target="_blank" href="http://www.jikexueyuan.com/course/205.html"><li>Java开发环境搭建</li></a>
+                    <a target="_blank" href="http://www.jikexueyuan.com/course/127.html"><li>HTML5特性简介</li></a>
+                    <a target="_blank" href="http://www.jikexueyuan.com/course/65.html"><li>Javascript基础语法、数组、面向对象、调试</li></a>
+                    <a target="_blank" href="http://www.jikexueyuan.com/course/128.html"><li>HTML5元素、属性和格式化</li></a>
+                    <a target="_blank" href="http://www.jikexueyuan.com/course/671.html"><li>在 Activity 之间传递参数</li></a>
+                    <a target="_blank" href="http://www.jikexueyuan.com/course/136.html"><li>HTML5样式、链接和表格</li></a>
+                    <a target="_blank" href="http://www.jikexueyuan.com/course/26.html"><li>Android项目开发实战-4个实战项目7天学会Android经典教程</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+{% endverbatim %}
+
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+    <html >
+    <head>
+        {% load staticfiles %}
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>IT在线教育平台-中国最大的IT职业在线教育平台</title>
+    <meta name="keywords" content="好的学院,IT职业教育,IT在线教育平台,IT在线教育,IT在线学习,it职业培训,android,ios,flash,java,python,html5,swift,cocos2dx" />
+    <meta name="description" content="好的学院作为中国最大IT职业在线教育平台,拥有海量高清IT职业课程,涵盖30+个技术领域,如Android,iOS ,Flash,Java,Python,HTML5,Swift,Cocos2dx等视频教程.根据IT在线学习特点,好的学院推出IT学习知识体系图,IT职业学习实战路径图,帮助IT学习者从零基础起步,结合IT实战案例演练,系统学习,助你快速成为IT优秀技术人才！" />
+    <link href="{% static "oday/css/register.css" %}" rel="stylesheet" type="text/css">
+    	
+
+	<script type="text/javascript" src="{% static "oday/js/jquery.min.js " %}"></script>
+	 
+    
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=    s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//static/oday/css/analytics.js','ga');
+
+    ga('create', 'UA-50413628-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    <link rel="stylesheet" href="{% static "oday/css/common_sync0_libs_cd30832.css" %}" />
+	<link rel="stylesheet" href="{% static "oday/css/common_sync1_libs_2ca8ce3.css" %}" />
+	<link rel="stylesheet" href="{% static "oday/css/index_sync0_libs_2b97a74.css" %}"/>
+	<link rel="stylesheet" href="{% static "oday/css/focuswork_a473641.css" %}" />
+	<link rel="stylesheet" href="{% static "oday/css/live_a474b6e.css" %}" />
+	<link rel="stylesheet" href="{% static "oday/css/meiti_b1fb92c.css" %}" />
+
+
+        <link href="{% static "angularjsfile/css/bootstrap.min.css" %}" rel="stylesheet">
+        <script src="{% static "angularjsfile/js/jquery.min.js" %}"></script>
+        <script src="{% static "angularjsfile/js/bootstrap.min.js" %}"></script>
+        <script src="{% static "angularjsfile/js/angular.min.js" %}"></script>
+
+
+
+</head>
+
+ <!--使用AngularJS-->
+ <body  ng-app="myApp"  ng-controller="myCtrl" >
+
+ <!--不用。  从django后台传来的变量 先赋值给videonames,再在AngularJS中使用-->
+ <div ng-init='videonames =
+          {{ Playvideos }}
+        '>
+ </div>
+
+    <div id="wrapper">
+            <div id="header" class="w-1000">
+
+	<div class="wrap">
+		<a href="http://www.jikexueyuan.com/">
+			<h2><img src="{% static "oday/img/logo_oday.png" %}" class="logo" alt="好的学院"  ></h2>
+		</a>
+        <!--产生动画-->
+		<img src="{% static "oday/img/zan-2_83b5cb7.png" %}">
+
+        <script>
+            var app = angular.module('myApp', []);
+            app.controller('myCtrl', function($scope, $http) {
+                $http.get("/static/oday/php/db_play2.php")
+                        .success(function (response) {$scope.Playvideos = response.records;});
+            });
+        </script>
+   <!--django模板使用AngularJS变量-->
+  {% verbatim %}
+        <!--搜索部分-->
+		<div class="search-section">
+
+			<div class="headsearch" id="headsearch" action="###">
+				<input name="t" type="hidden" value="course">
+
+                <!-- 搜索结果保存在results -->
+                <!--从django后台传来的变量 先赋值给videonames,再在AngularJS中使用-->
+                <!--div  ng-repeat="friend in videonames| filter:q as results " >  </div  -->
+
+               <!--AngularJS用函数读取数据库文件数据,数据赋值Playvideos,数量直接使用,并且加载网页时就，加载数据-->
+                <div  ng-repeat="friend in Playvideos| filter:q as results ">    </div>
+
+                <form   action='#' method='get' name='formname'>
+
+				<input class="search-text" type="text" ng-model='q' name="q" autocomplete="off"  placeholder="搜索课程、问答或Wiki" >
+				<button type="submit" class="search-btn" value= {{results}} name='submit_name' ></button>
+
+              </form>
+
+                    <div class="hot-words" style="display: block;">
+					<a href="http://search.jikexueyuan.com/course/?q=Android" jktag="&posGP=102001&posArea=9001&posOper=900030&aSS=Android">Android</a>
+					<a href="http://search.jikexueyuan.com/course/?q=iOS" jktag="&posGP=102001&posArea=9001&posOper=900030&aSS=iOS">iOS</a>
+					<a href="http://search.jikexueyuan.com/course/?q=HTML5" jktag="&posGP=102001&posArea=9001&posOper=900030&aSS=HTML5">HTML5</a> </div>
+				<div id="J_keywordList" class="keyword-list">
+					<ul class="result-list"></ul>
+				</div>
+			</div>
+		</div>
+    {% endverbatim %}
+
+		<div class="loginbox">
+			<span class="my-massage2">&nbsp;</span>
+
+			<em style="padding: 0px 10px">|</em>
+			<span><a href="http://localhost:8000/blog/signin/" >登录</a></span>
+			<em style="padding: 0px 10px">|</em>
+			<span style="position: relative;"><a href="http://localhost:8000/blog/register/" >注册</a></span>
+		</div>
+		
+
+	</div>
+</div>
+<div id="loading">
+	<div class="loading-length"></div>
+</div>
+<div class="navpositon">
+	<div id="navbox">
+		<div class="nav w-1000">
+			<div class="navbox">
+				<a href="http://localhost:8000/blog/index/" >首页</a>
+				<a href="http://www.jikexueyuan.com/course/" class="" jktag="0002|2|00200" node-type="nav-link">职业课程</a>
+				<a href="http://j.jikexueyuan.com?huodong=jiuye_all_guide" class=""
+				jktag="0002|3|00300" node-type="nav-link">就业学习</a>
+				<a href="javascript:;" class="" node-type="nav-link">好的社区</a><a href="javascript:;" style="position: relative;" node-type="nav-link">好的+</a>
+
+				<ul class="navpanel cf">
+					<li class="panel-item" node-type="nav-panel-item">
+						<span class="angle"></span>
+						<ul class="item-box">
+							<li><a target="_blank" href="http://www.jikexueyuan.com/course/" class="" jktag="0002|2|00201">课程库</a></li>
+							<li><a target="_blank" href="http://www.jikexueyuan.com/path/" class="" jktag="0002|2|00202">知识体系图</a></li>
+							<li><a target="_blank" href="http://ke.jikexueyuan.com/zhiye/" jktag="0002|2|00203">职业路径图</a></li>
+							<li><a target="_blank" href="http://ke.jikexueyuan.com/xilie/" jktag="0002|2|00204">系列课程</a></li>
+						</ul>
+					</li>
+					<li class="panel-item" node-type="nav-panel-item">
+						<span class="angle"></span>
+						<ul class="item-box">
+							<li><a target="_blank" href="http://j.jikexueyuan.com/train/web?huodong=jiuye_web_guide" jktag="0002|3|00301">Web前端开发</a></li>
+							<li><a target="_blank" href="http://j.jikexueyuan.com/train/android?huodong=jiuye_android_guide" jktag="0002|3|00302">Android开发</a></li>
+							<li><a target="_blank" href="http://j.jikexueyuan.com/train/javaweb?huodong=jiuye_javaweb_guide" jktag="0002|3|00303">JavaWeb开发</a></li>
+							<li><a target="_blank" href="http://j.jikexueyuan.com/train/ios?huodong=jiuye_ios_guide" jktag="0002|3|00304">iOS开发</a></li>
+						</ul>
+					</li>
+					<li class="panel-item" node-type="nav-panel-item">
+						<span class="angle"></span>
+						<ul class="item-box">
+							<li><a target="_blank" href="http://wiki.jikexueyuan.com" jktag="0002|4|00401">Wiki</a></li>
+							<li><a target="_blank" href="http://wenda.jikexueyuan.com/" jktag="0002|4|00402">技术问答</a></li>
+							<li><a target="_blank" href="http://qun.jikexueyuan.com" jktag="0002|4|00403">社群</a></li>
+							<li><a target="_blank" href="http://download.jikexueyuan.com" jktag="0002|4|00404">资源分享</a></li>
+						</ul>
+					</li>
+					<li class="panel-item" node-type="nav-panel-item">
+						<span class="angle"></span>
+						<ul class="item-box">
+							<li><a target="_blank" href="http://mooc.jikexueyuan.com" jktag="0002|4|00501">高校合作</a></li>
+							<li><a target="_blank" href="http://zhiye.jikexueyuan.com" jktag="0002|4|00502">好的人才联盟</a></li>
+							<li><a target="_blank" href="http://press.jikexueyuan.com/evangelist/apply.html" jktag="0002|4|00503">布道师招募</a></li>
+							<li><a target="_blank" href="http://j.jikexueyuan.com/assistant/apply" jktag="0002|4|00504">实战教练招募</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="user-need">
+				<a href="http://www.jikexueyuan.com/vip/" jktag="&posGP=114001&posArea=9004&posOper=900021">
+					<span><img src="{% static "oday/img/vip-icon_76ae754.png"%}">VIP会员</span>
+				</a>
+				<a href="http://press.jikexueyuan.com/topic/" target="_blank" jktag="&posArea=9004&posOper=900022">
+					<span><img src="{% static "oday/img/star-icon_c593bc1.png"%}">求课程</span>
+				</a>
+
+				<a href="http://www.jikexueyuan.com/app/" target="_blank" jktag="&posGP=116001&posArea=9004&posOper=900023">
+				<span style="position: relative;"><img src="{% static "oday/img/dl-icon_4bc18a7.png"%}">
+                    <img src="{% static "oday/img/newicon_56b11ef.png"%}" style="width: 14px;height: 15px;position: absolute;z-index: 2000;right: -19px;top: -14px;display: block;"/>APP下载</span></a>
+
+			</div>
+<!--			 <span class="arrow"></span> -->
+		</div>
+	</div>
+</div>
+
+    <div>
+           <!-- content -->
+            {% block content %}
+            {% endblock %}
+            <!--  content end -->
+     </div>
+
+
+
+            <div id="footer" class="mar-t50">
+	<div class=" jkinfor-block">
+		<div class="jkinfor cf">
+			<dl>
+				<dt><a target="_blank" href="http://www.jikexueyuan.com/course/" jktag="&posGP=101001&posArea=9005&posOper=900027">好的学院</a></dt>
+				<dd>·<a target="_blank" href="http://www.jikexueyuan.com/course/" jktag="&posGP=101001&posArea=9005&posOper=900027">职业课程库</a></dd>
+				<dd>·<a target="_blank" href=" http://www.jikexueyuan.com/path/" jktag="&posGP=101003&posArea=9005&posOper=900027">知识体系图</a></dd>
+				<dd>·<a target="_blank" href=" http://ke.jikexueyuan.com/zhiye/" jktag="&posGP=101004&posArea=9005&posOper=900027">职业路径图</a></dd>
+				<dd>·<a target="_blank" href=" http://www.jikexueyuan.com/partner/" jktag="107001&posGP=&posArea=9005&posOper=900027">企业课程</a></dd>
+				<dd>·<a target="_blank" href=" http://www.jikexueyuan.com/resources/" jktag="&posGP=108001&posArea=9005&posOper=900027">资源下载</a></dd>
+				<dd>·<a target="_blank" href=" http://www.jikexueyuan.com/tag/" jktag="&posGP=105002&posArea=9005&posOper=900027">课程标签</a></dd>
+			</dl>
+			<dl>
+				<dt><a target="_blank" href=" http://www.jikexueyuan.com/member/freevip.html" jktag="&posGP=115002&posArea=9005&posOper=900027">网站服务</a></dt>
+				<dd>·<a target="_blank" href=" http://press.jikexueyuan.com/topic/" jktag="&posArea=9005&posOper=900027">课程需求</a></dd>
+				<dd>·<a target="_blank" href=" http://www.jikexueyuan.com/member/freevip.html" jktag="&posGP=115002&posArea=9005&posOper=900027">免费体验VIP</a></dd>
+				<dd>·<a target="_blank" href=" http://www.jikexueyuan.com/blog/" jktag="&posGP=109001&posArea=9005&posOper=900027">黑板报</a></dd>
+				<dd>·<a target="_blank" href=" http://www.jikexueyuan.com/sitemap.html" jktag="&posGP=116001&posArea=9005&posOper=900027">网站地图</a></dd>
+			</dl>
+			<dl>
+				<dt><a target="_blank" href=" http://www.jikexueyuan.com/question/" jktag="&posGP=104002&posArea=9005&posOper=900027">帮助中心</a></dt>
+				<dd>·<a target="_blank" href="http://wenda.jikexueyuan.com/" jktag="&posGP=104002&posArea=9005&posOper=900027">技术问答</a></dd>
+				<dd>·<a target="_blank" href=" http://www.jikexueyuan.com/vip/" jktag="&posGP=114001&posArea=9005&posOper=900027">VIP权益</a></dd>
+				<dd>·<a target="_blank" href=" http://www.jikexueyuan.com/help/faq.html" jktag="&posGP=110001&posArea=9005&posOper=900027">常见问题</a></dd>
+				<dd>·<a target="_blank" href=" http://www.jikexueyuan.com/help/service.html" jktag="&posGP=110001&posArea=9005&posOper=900027">服务条款</a></dd>
+				<dd>·<a target="_blank" href=" http://www.jikexueyuan.com/help/copyright.html" jktag="&posGP=110001&posArea=9005&posOper=900027">版权声明</a></dd>
+				<dd>·<a target="_blank" href=" http://www.jikexueyuan.com/help/disclaimer.html" jktag="&posGP=110001&posArea=9005&posOper=900027">免责声明</a></dd>
+			</dl>
+			<dl>
+				<dt><a target="_blank" href=" http://www.jikexueyuan.com/help/about.html" jktag="&posGP=110001&posArea=9005&posOper=900027">交流合作</a></dt>
+				<dd>·<a target="_blank" href=" http://www.jikexueyuan.com/help/about.html" jktag="&posGP=110001&posArea=9005&posOper=900027">关于我们</a></dd>
+				<dd>·<a target="_blank" href=" http://www.jikexueyuan.com/help/contact.html" jktag="&posGP=110001&posArea=9005&posOper=900027">联系我们</a></dd>
+				<dd>·<a target="_blank" href=" http://www.jikexueyuan.com/help/join.html" jktag="&posGP=110001&posArea=9005&posOper=900027">社会招聘</a></dd>
+				<dd>·<a target="_blank" href=" http://press.jikexueyuan.com/evangelist/apply.html" jktag="&posArea=9005&posOper=900027">布道师招募</a></dd>
+				<dd>·<a target="_blank" href="mailto:hey@jikexueyuan.com?subject=业务咨询合作" rel="nofollow" jktag="&posArea=9005&posOper=900027">合作咨询</a></dd>
+				<dd>·<a target="_blank" href=" http://www.jikexueyuan.com/friendlink.html" jktag="&posGP=113003&posArea=9005&posOper=900027">友情链接</a></dd>
+				<dd>·<a target="_blank" href=" http://jiuye.jikexueyuan.com/assistant/apply">实战教练招募</a></dd>
+			</dl>
+			<div class="search-share">
+				<strong class="jktxt">好的学院，编程实现梦想！</strong>
+				<div class="app-download">
+					<a target="_blank" href=" http://www.jikexueyuan.com/app/" jktag="&posGP=116001&posArea=9005&posOper=900024">
+						<img src="{% static "oday/img/iphone_ecb3977.png"%}" width="21">
+						<div>
+							<strong>手机客户端</strong>
+							<p>离线缓存 随时学习</p>
+						</div>
+					</a>
+				</div>
+				<div class="share">
+					<a href="http://weibo.com/jikexueyuan" class="sina-icon" rel="nofollow" target="_blank" jktag="&posArea=9005&posOper=900025"></a>
+					<a href="http://tieba.baidu.com/f?kw=%BC%AB%BF%CD%D1%A7%D4%BA&amp;fr=index" title="好的学院官方百度贴吧" class="tieba-icon" rel="nofollow" target="_blank" jktag="&posArea=9005&posOper=900026"></a>
+					<a href="javascript:void(0);" class="qq-icon" rel="nofollow" jktag="&posArea=9005&posOper=900030">
+						<img src="{% static "oday/img/weixin-pop_7fe7a08.png"%}" class="weinxinpop">
+					</a>
+				</div>
+				<div class="kefu-online">
+					<a class="apply"  onclick="doyoo.util.openChat('g=10059996');return false;" href="javascript:;"jktag="&posArea=9005&posOper=900031" rel="nofollow">
+						<div class="kefu-icon online"></div>
+						<h5>联系我们</h5>
+						<p>工作日9:00-21:00在线</p>
+					</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="w-1000 copyright">
+		Copyright © 2013-2016 <strong><a href="#" target="_blank">上海好的无线技术有限公司</a></strong>&nbsp;<strong><a href="#" target="_blank">odayoday.com</a></strong> All Rights Reversed. 京ICP备11018032号-8 京公网安备11010802013056
+	</div>
+</div>
+<script>
+	var _Sjkxy = [];
+	_Sjkxy['jPro'] = 'www';
+	_Sjkxy['params'] = 'posId:100001|posOper:1001|course:[object Object]|';
+</script>
+
+<script>
+    var oHead = document.getElementsByTagName('HEAD').item(0); 
+    var oScript= document.createElement("script"); 
+    oScript.type = "text/javascript"; 
+    oScript.src="http://wirrorcdn.jikexueyuan.com/stat/JKanalysis.js?"+ new Date().getTime() + "" + Math.random(); 
+    oHead.appendChild( oScript); 
+ </script>
+
+  <script type="text/javascript" charset="utf-8" src="http://lead.soperson.com/20001269/10057537.js"></script>     
+<script type="text/javascript">
+	var inter = setInterval(function() {
+		if (window.mechatMetadata) {
+			clearInterval(inter);
+			window.mechatMetadata({
+				appUserName: '',
+				extraParams: {
+					'用户名': '',
+					'UID': '',
+					'开始时间': '',
+					'结束时间': '',
+					'会员类型': '',
+				}
+			});
+		}
+	}, 500);
+</script>
+
+<div class="gotop" id="gototop">
+	
+	<a href="http://www.sojump.com/jq/5450574.aspx" class="diaocha" target="_blank"></a>
+	<a  onclick="doyoo.util.openChat('g=10059996');return false;" href="javascript:;" class="apply qq-online qq-online1"
+	rel="nofollow"><span class="kefu">在线客服<br>  工作日9:00-21:00在线<i></i></span></a>
+
+	<div class="pewm2"><i class="close"></i>
+		<!-- 广告位：首页右侧悬浮上_001-1 -->
+		<!--div id="float_1">
+			<p>正在读取中...</p>
+			<span class="loading_icon rotate2_360"/></span>
+		</div-->
+	</div>
+	<div class="pewm3"><i class="close"></i>
+		<!-- 广告位：首页右侧悬浮上_001-2 -->
+		<!--div id="float_2">
+  				<p>正在读取中...</p>
+  				<span class="loading_icon rotate2_360"/></span>
+		</div-->
+	</div>
+ </div>
+
+ </div>
+
+
+ </body>
+</html>

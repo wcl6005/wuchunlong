@@ -1,0 +1,162 @@
+<!DOCTYPE html >
+<!-- saved from url=(0043)https://passport.ganji.com/login.php?next=/ -->
+<html >
+
+<head>
+
+    {% load staticfiles %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">object {outline:none;}</style>
+
+    <title>用户登录</title>
+
+    <link type="text/css" href="{% static "blog/css/login_new.cmb.__1457173320__.css" %}" rel="stylesheet">
+    <style>
+        .head-r .dingdong-pop .ewm {
+            background: url(https://passport.ganji.com/src/image/v5/head_ganji_dingdong.png) 0 -12px;//二维码
+        width: 100px;
+            height: 100px;
+            margin-left: 5px;
+        }
+        .active .l-tab .l-tab-1{
+            display: none;
+        }
+        .active .l-tab .l-tab-2{
+            display: block;
+        }
+        .active .cont-box1{
+            display: none;
+        }
+        .active .cont-box-tab{
+            display: block;
+        }
+        .show-img{
+            display: none;
+        }
+        .show-img.active{
+            -webkit-animation: slide 0.8s ease-in-out;
+            animation: slide 0.8s ease-in-out;
+            display: block;
+        }
+        @keyframes slide{
+            0%{
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            70%{
+                transform: translateX(2%);
+            }
+            90%{
+                transform: translateX(-1%);
+            }
+            100%{
+                transform: translateX(0%);
+                opacity: 1;
+            }
+        }
+        @-webkit-keyframes slide{
+            0%{
+                -webkit-transform: translateX(-100%);
+                opacity: 0;
+            }
+            70%{
+                -webkit-transform: translateX(2%);
+            }
+            95%{
+                -webkit-transform: translateX(-1%);
+            }
+            100%{
+                -webkit-transform: translateX(0%);
+                opacity: 1;
+            }
+        }
+    </style>
+
+</head>
+<body >
+
+
+
+<!--logo s-->
+<div class="logo-wrap clearfix">
+    <div class="gj-logo">
+        <a >
+            <img width="155" height="62" alt="更专业的IT信息网" src="{% static "blog/img/logo_oday.png" %}"></a>
+    </div>
+
+</div>
+<!--logo e-->
+<!--wrapper s-->
+<div id="wrapper">
+    <div class="clearfix">
+        <div class="login-banner">
+            <div>
+
+                <img src="/static/blog/img/0522-login-banner.jpg">
+            </div>
+
+        </div>
+        <div>
+            <div class="login-box">
+                <div class="cont-box1">
+
+
+                    <form id="loginform" action="#" method="get">
+
+                        <div class="lh24">用户名/邮箱/手机号</div>
+                        <div class="login_username clearfix">
+                            <input value=""   name="username"
+                                   type="text" class="input-text usename" title="用户名/邮箱/手机号" tabindex="1">
+                        </div>
+
+                        <div class="lh24">密码
+                            <a class="field-tips" target="_blank" href="http://www.ganji.com/user/get_password.php">忘记密码？
+                            </a>
+                        </div>
+
+                        <div class="field clearfix">
+                            <input value=""     name="password"
+                                   type="password" class="input-text usepassword" maxlength="16" tabindex="2">
+                        </div>
+
+                        <div class="lh24">注册
+                            <a class="field-tips" target="_blank" href="/blog/register">立即注册？
+                            </a>
+                        </div>
+
+                        <div class="lh24">首页
+                            <a class="field-tips" target="_blank" href="/blog/PlayVideo">返回首页？
+                            </a>
+                        </div>
+
+                        <p class="N-txt1">
+                            <input value="14" checked="" name="setcookie" type="checkbox" class="chk-vm">
+                            <label for="stay-login">下次自动登录(公共场所请勿勾选)</label>
+                        </p>
+
+
+                            <input class="btn-org" data-role="submit" type="submit" value="登录">
+                            <span class="msg-submit" style="display:none">正在提交···</span>
+
+                    </form>
+
+                </div>
+
+            </div>
+            <a  class="l-tab">
+                <div  class="l-tab-1">
+                    <p>微信扫码登录</p>
+                    <div>
+                        <img data-role="smQR" src="{% static "blog/img/showqrcode" %}" width="90" height="90">
+                    </div>
+                </div>
+
+            </a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+
