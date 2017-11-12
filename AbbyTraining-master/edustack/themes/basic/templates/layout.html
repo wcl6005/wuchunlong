@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% block html_attr %}
+<html lang="en">
+{% endblock %}
+    {% block html_head %}
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}{{ gt.layout.title }}{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+        <link rel="apple-touch-icon-precomposed" href="{{ url_for('static', filename='images/favicon.ico') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/uikit.min.css') }}">
+        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/uikit.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/md5.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/vue.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/abbyCommon.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/abbyApp.js') }}"></script>
+        {% block scripts_begin %}
+        {% endblock %}
+    </head>
+    {% endblock %}
+    {% block html_body %}
+    <body>
+        <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+        {% block header %}
+        <div class="uk-margin">
+		    <nav class="uk-navbar">
+		        <a class="uk-navbar-brand" href="{{ url_for('home.index') }}"><i class="uk-icon-home"></i> Home</a>
+		        <ul class="uk-navbar-nav">
+		            <li class="uk-parent uk-active" data-uk-dropdown>
+		                <a href="{{ url_for('course.index') }}"><i class="uk-icon-book"></i> Course</a>
+		                <div class="uk-dropdown uk-dropdown-navbar">
+		                    <ul class="uk-nav uk-nav-navbar">
+		                        <li><a href="#">Item</a></li>
+		                        <li><a href="#">Another item</a></li>
+		                        <li class="uk-nav-header">Header</li>
+		                        <li><a href="#">Item</a></li>
+		                        <li><a href="#">Another item</a></li>
+		                        <li class="uk-nav-divider"></li>
+		                        <li><a href="#">Separated item</a></li>
+		                    </ul>
+		                </div>
+		            </li>
+		        </ul>
+		        <ul class="uk-navbar-nav">
+		            <li class="uk-parent uk-active" >
+		                <a href="{{ url_for('blog.index') }}"><i class="uk-icon-pencil-square-o"></i> Blog</a>
+		            </li>
+		        </ul>
+		        <div class="uk-navbar-flip">
+		          <ul class="uk-navbar-nav">
+		          {% if current_user.is_authenticated %}
+		            <li class="uk-parent" data-uk-dropdown>
+		                <a href="#0"><i class="uk-icon-user"></i> {{ current_user.name }}</a>
+		                <div class="uk-dropdown uk-dropdown-navbar">
+		                  <ul class="uk-nav uk-nav-navbar">
+		                    <li><a href="/signout"><i class="uk-icon-sign-out"></i> Logout</a></li>
+		                  </ul>
+		                </div>
+		            </li>
+		          {% else %}
+		            <li><a href="/signin"><i class="uk-icon-sign-in"></i> Login</a></li>
+		            <li><a href="/register"><i class="uk-icon-edit"></i> Register</a></li>
+		          {% endif %}
+		          </ul>
+		        </div>
+
+		        <div class="uk-navbar-content uk-navbar-flip">
+		            <form class="uk-form uk-margin-remove uk-display-inline-block">
+		                <input type="text" placeholder="Search">
+		                <button class="uk-button uk-button-primary"><i class="uk-icon-search"></i></button>
+		            </form>
+		        </div>
+		    </nav>
+		</div>
+        {% endblock %}
+        {% block content %}
+        {% endblock %}
+        {% block footer %}
+        <div class="uk-margin-large-top" style="background-color:#eee; border-top:1px solid #ccc;">
+		    <div class="uk-container uk-container-center uk-text-center">
+		        <div class="uk-panel uk-margin-top uk-margin-bottom">
+		            <p>
+		                {% for item in gt.layout.footer_ext_links %}
+		                <a target="_blank" href="{{ item.1 }}" class="uk-icon-button uk-icon-{{ item.0 }}"></a>
+		                {% endfor %}
+		            </p>
+		            <p>Powered by <a href="{{ gt.layout.powerby_link }}">{{ gt.layout.powerby_name }}</a>. Copyright &copy; 2016. [<a href="{{ gt.layout.manage_link }}" target="_blank">{{ gt.layout.manage_name }}</a>]</p>
+		            <p><a href="{{ gt.layout.rights_link }}" target="_blank">{{ gt.layout.rights_name }}</a>. All rights reserved.</p>
+		        </div>
+		    </div>
+		</div>
+        {% endblock %}
+        </div>
+    </body>
+    {% endblock %}
+</html>
+{% block scripts_end %}
+{% endblock %}

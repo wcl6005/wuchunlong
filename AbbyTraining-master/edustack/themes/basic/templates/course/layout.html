@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class='uk-grid' data-uk-grid-margin>
+    <div class="uk-width-medium-4-5 uk-row-first">
+    {% block content_left %}
+    {% endblock %}
+    </div>
+
+    <div class="uk-width-medium-1-5">
+        {% block content_right_up %}
+        {% endblock %}
+        {% block content_right_down %}
+        <div class="uk-panel uk-panel-header">
+            <h3 class="uk-panel-title">Link</h3>
+            <ul class="uk-list uk-list-line">
+                {% for item in gt.layout.right_ext_links %}
+                <li><i class="uk-icon-link"></i> <a target="_blank" href="{{ item.1 }}">{{ item.0 }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}

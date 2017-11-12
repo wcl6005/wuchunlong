@@ -1,0 +1,108 @@
+{% extends 'manage/layout.html' %}
+
+{% block scripts_begin %}
+
+<script>
+
+function initVM(data) {
+    $('#div-comments').show();
+    var vm = new Vue({
+        el: '#div-comments',
+        data: {
+            comments: data.comments,
+            page: data.page
+        },
+        methods: {
+            previous: function () {
+                gotoPage(this.page.page_index - 1);
+            },
+            next: function () {
+                gotoPage(this.page.page_index + 1);
+            },
+            delete_comment: function (comment) {
+                var content = comment.content.length > 20 ? comment.content.substring(0, 20) + '...' : comment.content;
+                showConfirm('Confirm Delete', 'Confirm delete "' + comment.content + '"? Could not recovery.', function () {
+                    deleteApi('/api/comments/' + comment.id, {}, function (err, r) {
+                        if (err) {
+                            return showError(err);
+                        }
+                        location.reload();
+                    });
+                });
+            }
+        }
+    });
+}
+
+$(function() {
+    getApi('/api/comments?page={{ page_index }}', function (err, results) {
+        if (err) {
+            return showError(err);
+        }
+        $('#div-loading').hide();
+        initVM(results);
+    });
+});
+
+</script>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="uk-width-1-1 uk-margin-bottom">
+        <div class="uk-panel uk-panel-box">
+            <ul class="uk-breadcrumb">
+                <li class="uk-active"><span>Comment</span></li>
+                <li><a href="/manage/blogs">Blog</a></li>
+                <li><a href="/manage/users">User</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="uk-width-1-1">
+        <div class="uk-alert uk-alert-danger uk-hidden"></div>
+    </div>
+
+    <div id="div-comments" class="uk-width-1-1" style="display:none">
+        <table class="uk-table uk-table-hover">
+            <thead>
+                <tr>
+                    <th class="uk-width-2-10">Author</th>
+                    <th class="uk-width-5-10">Content</th>
+                    <th class="uk-width-2-10">Created on</th>
+                    <th class="uk-width-1-10">Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-repeat="comment: comments" >
+                    <td>
+                        <span v-text="comment.user.name"></span>
+                    </td>
+                    <td>
+                        <span v-text="comment.content"></span>
+                    </td>
+                    <td>
+                        <span v-text="comment.created_at.toDateTime()"></span>
+                    </td>
+                    <td>
+                        <a href="#0" v-on="click: delete_comment(comment)"><i class="uk-icon-trash-o"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="uk-width-1-1 uk-text-center">
+            <ul class="uk-pagination">
+                <li v-if="! page.has_previous" class="uk-disabled"><span><i class="uk-icon-angle-double-left"></i></span></li>
+                <li v-if="page.has_previous"><a v-on="click: previous()" href="#0"><i class="uk-icon-angle-double-left"></i></a></li>
+                <li class="uk-active"><span v-text="page.page_index"></span></li>
+                <li v-if="! page.has_next" class="uk-disabled"><span><i class="uk-icon-angle-double-right"></i></span></li>
+                <li v-if="page.has_next"><a v-on="click: next()" href="#0"><i class="uk-icon-angle-double-right"></i></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="div-loading" class="uk-width-1-1 uk-text-center">
+        <span><i class="uk-icon-spinner uk-icon-medium uk-icon-spin"></i> Loading...</span>
+    </div>
+{% endblock %}
