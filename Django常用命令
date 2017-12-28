@@ -1,0 +1,56 @@
+Django基本操作命令
+1、新建一个django项目
+code####start
+django-admin.py startproject project-name
+codeend
+2、新建一个app
+code####start
+python manage.py startapp app-name
+codeend
+3、同步数据库
+code####start
+python manage.py syncdb
+注意：Django 1.7.1及以上的版本需要用以下命令。修改models.py,例如增加字段后，用以下命令，原来数据将保留。
+python manage.py makemigrations
+python manage.py migrate
+备注：对已有的 models 进行修改，Django 1.7之前的版本的Django都是无法自动更改表结构的，不过有第三方工具south
+codeend
+4、运行开发服务器
+code####start
+python manage.py runserver 0.0.0.0:8000
+codeend
+5、清空数据库
+code####start
+python manage.py flush
+此命令会询问是 yes 还是 no, 选择 yes 会把数据全部清空掉,包括清空超级管理员数据，只留下空表。
+codeend
+6、创建超级管理员
+code####start
+python manage.py createsuperuser
+codeend
+7、导出数据、导入数据
+code####start
+不指定 appname 字段 时默认为导出所有的app
+python manage.py dumpdata [appname] > appname_data.json
+python manage.py dumpdata > appname.json
+python manage.py loaddata appname.json
+codeend
+8、django项目环境终端
+code####start
+python manage.py shell
+如果你安装了bpython或者ipython，会自动调用他们的界面
+codeend
+9、数据库执行命令
+code####start
+python manage.py dbshell
+django会进行到settings中设置的数据库，如果是mysql或者postgresql，会要求输入用户名和密码
+在这个终端可以输入sql语句
+codeend
+10、修改登录密码
+code####start
+python manage.py changepassword username # 用户名 username
+codeend
+11、更多命令
+code####start
+在终端上输入python manage.py 回车，就可以看到详细的列表
+codeend
