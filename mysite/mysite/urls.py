@@ -16,5 +16,5 @@ urlpatterns = [
     url(r'^home/', include('home.urls')), 
     url(r'^apis/', include('home.apis.urls')),   
     url(r'^$', IndexView.as_view()),
-           
+        
 ]

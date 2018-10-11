@@ -40,7 +40,8 @@ $(function () {
                     return showError('请输入正确的验证码');
                 }
                 startLoading();
-                postApi('/apis/registerapi/', { 
+                postApi('/apis/registerapi/', {
+                //postApi('/home/users/?format=api', {  
                     name: this.name,
                     email: this.email,
                     password: this.password1

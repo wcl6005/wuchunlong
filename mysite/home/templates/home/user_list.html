@@ -1,0 +1,86 @@
+{% extends '__base__.html' %}
+
+
+{% block scripts_begin %}
+ <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>   
+
+<script>
+$.ajaxSetup({headers: {"X-CSRFToken": '{{ csrf_token }}'}});
+function initVM(data) {
+    $('#div-users').show();
+    var vm = new Vue({
+        el: '#div-users',
+        data: {
+            users: data,
+            
+        }
+    });
+}
+
+$(function() {
+    //getApi('/blogapi/usersapi/'+{{page}}, function (err, results) {
+    getApi('/home/users/?format=json', function (err, results) {
+        if (err) {
+            return showError(err);
+        }
+        $('#div-loading').hide();
+        //alert(results[0].email);
+        initVM(results);
+    });
+});
+
+</script>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="uk-width-1-1 uk-margin-bottom">
+        <div class="uk-panel uk-panel-box">
+            <ul class="uk-breadcrumb">
+                <li><a href="/blog_vue/show/">Comment</a></li>
+                <li class="uk-active"><span>Blog</span></li>
+                <li><a href="/blog_vue/users/">User</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="uk-width-1-1">
+        <div class="uk-alert uk-alert-danger uk-hidden"></div>
+    </div>
+
+    <div id="div-users" class="uk-width-1-1" style="display:none">
+        <table class="uk-table uk-table-hover">
+            <thead>
+                <tr>
+                    <th class="uk-width-4-10">Name</th>
+                    <th class="uk-width-4-10">Email</th>
+                    <th class="uk-width-2-10">Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="user in users">
+
+                    <td>
+                        <span v-if="user.username === 'admin'" style="color:#d05"><i class="uk-icon-key"></i> Admin</span>
+                         <span v-else v-text="user.username"> </span>
+
+                    </td>
+                    <td>
+                         <span v-text="user.email"></span>
+                    </td>
+                    <td>
+                        <span v-text="user.password"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+       
+    </div>
+
+  
+    <div id="div-loading" class="uk-width-1-1 uk-text-center">
+        <span><i class="uk-icon-spinner uk-icon-medium uk-icon-spin"></i> Loading...</span>
+    </div>
+{% endblock %}

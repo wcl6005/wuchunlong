@@ -71,6 +71,18 @@
 		          </ul>
 		        </div>
 
+                <div id="app"> 
+                    <div class="uk-navbar-content uk-navbar-flip">
+                        <div class="uk-form uk-margin-remove uk-display-inline-block">
+                          
+                            <input v-model="q"  style="width:200px;" placeholder="{{placeholder}}" > 
+                            <a class="uk-button uk-button-primary" v-bind:href="'{{href}}?q=' + q"><i class="uk-icon-search"></i></a> 
+                       
+                        </div>  
+                    </div>              
+                </div>
+
+
 
 		    </nav>
 		</div>
@@ -95,6 +107,15 @@
     {% endblock %}
    
 </div>
+<script>
+    new Vue({
+        el: '#app',
+        delimiters: ['{[', ']}'], //vue模板显示变量       
+        data: {
+            q: ''          
+        }
+    })
+</script>
 </body>
 {% endblock %}
 </html>

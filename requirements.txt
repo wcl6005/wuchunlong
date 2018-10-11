@@ -10,3 +10,5 @@ monthdelta
 Pillow
 xlrd
 xlsxwriter
+djangorestframework
+markdown
