@@ -7,8 +7,7 @@ djangorestframework
 markdown 
 django-filter
 monthdelta
-Pillow
-xlrd
-xlsxwriter
-djangorestframework
-markdown
+beautifulsoup4
+bs4
+requests
+lxml
