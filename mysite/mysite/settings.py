@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 """
 Django settings for mysite project.
 
@@ -20,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'od1dv958gtzr!&r#_qk%lu2xz+_wt#9nxvdjxh_1g@3#j1ime!'
+SECRET_KEY = 'm*#@l&s7f@ad&ei!d=bxx+@6b0hqoy-sql#4zo00s2%^s@8rbv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,13 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'reptilian.apps.ReptilianConfig',
-    
+    'account.apps.AccountConfig',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -105,19 +106,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-# LANGUAGE_CODE = 'en-us'   #原来
-# TIME_ZONE = 'UTC'        #原来
-LANGUAGE_CODE = 'zh-Hans'  #修改
+#LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-Hans'
 
-LOCALE_PATHS = (     #增加
+LOCALE_PATHS = (
     os.path.join(os.path.dirname(os.path.abspath(__file__)), "../locale"),
 )
 
-TIME_ZONE = 'Asia/Shanghai' #修改
+TIME_ZONE = 'Asia/Shanghai'
 
-SITE_ROOT = os.path.dirname(os.path.abspath(__file__)) #增加
-SITE_ROOT = os.path.abspath(os.path.join(SITE_ROOT, '..')) #增加
-STATIC_ROOT = os.path.join(SITE_ROOT, 'static') #增加
 USE_I18N = True
 
 USE_L10N = True
@@ -128,14 +125,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+SITE_ROOT = os.path.dirname(os.path.abspath(__file__))
+SITE_ROOT = os.path.abspath(os.path.join(SITE_ROOT, '..'))
+STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (   #增加
+STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static_common').replace('\\', r'/'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
-
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
