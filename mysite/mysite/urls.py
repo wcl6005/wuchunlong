@@ -25,6 +25,4 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^account/', include('account.urls')),
     url(r'^$', RedirectView.as_view(url='/account/billing/', query_string=True)),
-
-    url(r'^mytest/', include('account.mytest.urls')),
 ]

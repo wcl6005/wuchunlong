@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
 from django.shortcuts import render
 from django.http.response import HttpResponseRedirect, HttpResponse,\
     StreamingHttpResponse
 from django.contrib.auth.decorators import login_required
 from monthdelta import monthdelta
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 from .models import Company, Material, Order
 from django.contrib.auth.models import User, Group
 import datetime
@@ -14,14 +16,7 @@ import re
 import tempfile
 import uuid
 import xlsxwriter
-import json
-def readJson(filepath):
-    try:
-        with open(filepath) as fp:        
-            return json.load(fp)
-    except Exception as ex:
-        return str(ex)
-    
+
 def _getOperators():
     operators = Group.objects.get(name='Operator').user_set.all()
     return [user for user in User.objects.all() if user.is_superuser or user in operators]
@@ -29,17 +24,17 @@ def _getOperators():
 @login_required
 def customer(request, page): 
     operators = _getOperators()
-     
+    
     if request.user not in operators:
         return HttpResponseRedirect('/')
     try:
         page = int(page)
     except Exception as _e:
         page = 1
-      
+     
     cleanData = {k.strip():v.strip() for k,v in request.GET.items()}
     queryString = '?'+'&'.join(['%s=%s' % (k,v) for k,v in cleanData.items()])
-      
+     
     companys = Company.objects
     if cleanData.get('name', ''):
         companys = companys.filter(name__icontains=cleanData['name'])
@@ -53,37 +48,38 @@ def customer(request, page):
         company_list = paginator.page(1)
     except EmptyPage:
         company_list = paginator.page(paginator.num_pages)
-          
+         
     pageList = list(paginator.page_range)
     if page < (paginator.num_pages)-3:
         pageList[page+2:-1] = ['...']
     if page > 1+3:
         pageList[1:page-3] = ['...']
-    offset = 25 * (page - 1)      
+    offset = 25 * (page - 1)
+     
     return render(request, 'account/customer.html', context=locals())
- 
+
 def _filterOrder(request, cleanData):
     orders = Order.objects
     operators = _getOperators()
-     
+    
     if request.user not in operators:
         orders = orders.filter(company__username=request.user)
     elif cleanData.get('company', ''):
         orders = orders.filter(company__name__icontains=cleanData['company'])
-         
+        
     if cleanData.get('content', ''):
         orders = orders.filter(content__icontains=cleanData['content'])
-     
+    
     if cleanData.get('author', ''):
         orders = orders.filter(author__username=cleanData['author'])
-         
+        
     if cleanData.get('checkout', '') == 'on' and cleanData.get('non_checkout', '') == 'on':
         orders = orders
     elif cleanData.get('checkout', '') == 'on':
         orders = orders.filter(checkout=True)
     elif cleanData.get('non_checkout', '') == 'on':
         orders = orders.filter(checkout=False)
-     
+    
     monthNum = cleanData.get('month', '1')
     try:
         monthNum = int(monthNum)
@@ -94,23 +90,24 @@ def _filterOrder(request, cleanData):
         startDate = endDate - monthdelta(monthNum)
         orders = orders.filter(date__range=[startDate, endDate])
     return orders, monthNum
- 
+
 @login_required
 def billing(request, page):
-    operators = _getOperators()    
+    operators = _getOperators()
+    
     try:
         page = int(page)
     except Exception as _e:
         page = 1
- 
+
     cleanData = {k.strip():v.strip() for k,v in request.GET.items()}
     queryString = '?'+'&'.join(['%s=%s' % (k,v) for k,v in cleanData.items()])
-     
+    
     orders, monthNum = _filterOrder(request, cleanData)
-     
-    TotalTax = sum(orders.values_list('priceIncludeTax', flat=True))
+    
+    TotalTax = round(sum(orders.values_list('priceIncludeTax', flat=True)), 2)
     orders = orders.order_by('-date', '-id')
-     
+    
     paginator = Paginator(orders, 25)
     try:
         order_list = paginator.page(page)
@@ -118,30 +115,29 @@ def billing(request, page):
         order_list = paginator.page(1)
     except EmptyPage:
         order_list = paginator.page(paginator.num_pages)
-         
+        
     pageList = list(paginator.page_range)
     if page < (paginator.num_pages)-3:
         pageList[page+2:-1] = ['...']
     if page > 1+3:
         pageList[1:page-3] = ['...']
     offset = 25 * (page - 1)
-     
+    
     if request.user in operators:
-        company_name_list = readJson('account/sortAPI/companynamelist.txt')
-         
+        company_name_list = Company.objects.values_list('name', flat=True)
         type_list = [i[0] for i in Order.ORDER_TYPE]
         material_name_list = Material.objects.values_list('name', flat=True)
         taxPercent_list = [i[0] for i in Order.ORDER_TAX]
-     
+    
     return render(request, 'account/billing.html', context=locals())
- 
+
 @login_required
 def addBilling(request):
     operators = _getOperators()
- 
+
     if request.user not in operators or request.method != 'POST':
         return HttpResponseRedirect('/')
-     
+    
     cleanData = {k.strip():v.strip() for k,v in request.POST.items()}
     company = Company.objects.get(name=cleanData['company'])
     type = cleanData.get('type', '')
@@ -155,53 +151,53 @@ def addBilling(request):
     if taxPercent not in [int(i[0]) for i in Order.ORDER_TAX]:
         taxPercent = Order.ORDER_TAX[0][0]
     taxPercent = int(taxPercent)
-      
+     
     o = Order()
     o.company = company
     o.type = type
     o.content = cleanData.get('content', '')
-      
+     
     reCmp = re.compile('(\d+(\.\d+)?)')
     if type == 'Manufacture':
         material = Material.objects.get(name=cleanData['material'])
         o.material = material
-          
+         
         try:
             sizeHeight = reCmp.search(cleanData.get('sizeHeight', ''))
             sizeHeight = float(sizeHeight.groups()[0])
         except Exception as _e:
             sizeHeight = 1
         o.sizeHeight = sizeHeight
-          
+         
         try:
             sizeWidth = reCmp.search(cleanData.get('sizeWidth', ''))
             sizeWidth = float(sizeWidth.groups()[0])
         except Exception as _e:
             sizeWidth = 1
         o.sizeWidth = sizeWidth
-          
+         
         o.price = sizeHeight * sizeWidth * material.price
     else:
         o.price = price
- 
+
     o.author = request.user
     o.quantity = count
     o.taxPercent = taxPercent
     o._autoFill()
     o.save()
-       
+      
     return HttpResponseRedirect('/account/billing/')
- 
+
 @login_required
 def addCustomer(request):
     operators = _getOperators()
-     
+    
     if request.user not in operators or request.method != 'POST':
         return HttpResponseRedirect('/')
     cleanData = {k.strip():v.strip() for k,v in request.POST.items()}
-     
+    
     customerGroup = Group.objects.get(name='Customer')
-     
+    
     id = User.objects.all().last().id + 1
     username = 'cx%06d' % id
     user = User.objects.create_user(username=username, password='@aB1234')
@@ -210,7 +206,7 @@ def addCustomer(request):
     user.groups.add(customerGroup)
     user.save()  
     user = User.objects.get(username=username)
-     
+    
     c = Company()
     c.name = cleanData['name']
     c.taxNumber = cleanData['tax_number']
@@ -221,15 +217,15 @@ def addCustomer(request):
     c.telephone = cleanData['telephone']
     c.username = user
     c.save()
-     
+    
     return HttpResponseRedirect('/account/customer/')
- 
+
 def convertxlsx(order_list, filePath):
     ret = True
     try:
         headings = ['ID',u'记录人',u'日期',u'公司',u'类型',u'内容',u'材料',\
                     u'单价',u'数量',u'税率',u'含税价',u'结算']
- 
+
         ids = [i.id for i in order_list ]
         authors = [i.author.username for i in order_list ]
         dates = [str(i.date).decode('UTF-8') for i in order_list]
@@ -246,7 +242,7 @@ def convertxlsx(order_list, filePath):
         checkouts = [u'已完成' if i.checkout else u'未结算' for i in order_list ]
         data = [ids, authors, dates, names, types, contents, materials, \
             prices, quantitys, taxPercents, priceIncludeTaxs, checkouts, ]
- 
+
         workbook = xlsxwriter.Workbook(filePath)
         worksheet = workbook.add_worksheet()
         bold = workbook.add_format({'bold': 1})  #如何控制单元格宽度？  
@@ -267,16 +263,16 @@ def convertxlsx(order_list, filePath):
     except Exception as _e:
         ret = False
     return ret
- 
+
 @login_required
 def makexlsx(request):
     if request.method != 'POST':
         return HttpResponseRedirect('/')
-     
+    
     cleanData = {k.strip():v.strip() for k,v in request.POST.items()}
     orders, _monthNum = _filterOrder(request, cleanData)
     order_list = orders.order_by('-date') 
- 
+
     def file_iterator(file_name, chunk_size=512):
         with open(file_name) as f:
             while True:
@@ -285,7 +281,7 @@ def makexlsx(request):
                     yield c
                 else:
                     break
- 
+
     fileName = r'Orders-%s.xlsx' % (datetime.datetime.now().strftime('%Y%m%d'),)
     tempDir = tempfile.mkdtemp()
     tempFilePath = os.path.join(tempDir, 'account-online-%s' % uuid.uuid4().hex)
@@ -294,7 +290,7 @@ def makexlsx(request):
         response['Content-Type'] = 'application/octet-stream'
         response['Content-Disposition'] = 'attachment;filename="{0}"'.format(fileName)
         return response
-     
+    
     ignoreList = ['page', 'csrfmiddlewaretoken']
     queryString = '?'+'&'.join(['%s=%s' % (k,v) for k,v in cleanData.items() if k not in ignoreList])
     try:
@@ -302,3 +298,4 @@ def makexlsx(request):
     except:
         page = 1
     return HttpResponseRedirect(r'/account/billing/%s%s' % (page, queryString))
+

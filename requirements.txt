@@ -1,6 +1,5 @@
 gevent
 gunicorn
-fabric
 markdown2
 pymysql
 django==1.11.5
@@ -11,5 +10,3 @@ monthdelta
 Pillow
 xlrd
 xlsxwriter
-jieba
-django-cors-headers

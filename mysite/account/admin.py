@@ -19,11 +19,7 @@ class OrderAdmin(admin.ModelAdmin):
                     'quantity', 'priceTotal', 'taxPercent', 'priceIncludeTax',
                     'checkout', 'author',)
     list_editable = ['checkout', ]
+
 admin.site.register(Material, MaterialAdmin)
 admin.site.register(Company, CompanyAdmin)
 admin.site.register(Order, OrderAdmin)
-#############################################################
-from mytest.models import Testusername
-@admin.register(Testusername)
-class TestusernameAdmin(admin.ModelAdmin):
-    list_display = ('id','username', 'password')
