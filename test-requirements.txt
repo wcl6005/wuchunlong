@@ -1,3 +1,8 @@
+-i https://pypi.douban.com/simple/ 
+mock
+nose
+
+# copy from requirement.txt
 gevent
 gunicorn
 fabric

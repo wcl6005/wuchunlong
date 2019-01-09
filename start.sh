@@ -17,7 +17,7 @@ function build_venv {
     fi
     . env/bin/activate
 
-    pip install -r requirements.txt
+    pip install -r test-requirements.txt
 }
 
 function rebuild_db {
@@ -56,5 +56,6 @@ build_venv
 if [ "${OPT_ENV_FORCE}x" != "-kx" ];then
     rebuild_db
 fi
+python "${BASE_DIR}/mysite/initsortAPI.py"
 
 launch_webapp

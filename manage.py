@@ -60,7 +60,7 @@ def opt_prepare_theme():
 def _assert_cmd_exist(cmd):
     try:
         subprocess.call(cmd)
-    except Exception as e:
+    except Exception, e:
         log.warning("{}->{}".format(type(e), e.message))
         log.error("Command '{}' not exist!".format(cmd))
         sys.exit()
