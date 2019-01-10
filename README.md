@@ -1,4 +1,1 @@
-# ZZLARGE-Project-DjangoTest
-
-Python2.7+
-Python3.5+
+Python3.5+  django1.11.5

@@ -24,7 +24,7 @@ if __name__ == "__main__":
     customerGroup.save()
     
     user = User.objects.create_superuser('admin', 'admin@test.com',
-                                         '56e1E@ab1234')
+                                         '1234qazx')
     user.save()
     
     OPEERATOR_NUM = 2
@@ -34,7 +34,7 @@ if __name__ == "__main__":
     
     for i in range(OPEERATOR_NUM):
         user = User.objects.create_user('op%s' % i, 'op%s@test.com' % i,
-                                        '1E@ab1234')
+                                        '1234qazx')
         user.is_staff = True
         user.is_superuser = False
         user.groups.add(operatorGroup)
@@ -48,7 +48,7 @@ if __name__ == "__main__":
     
     for i in range(COMPANY_NUM):
         user = User.objects.create_user('cx%s' % i, 'cx%s@test.com' % i,
-                                        '@aB1234')
+                                        '1234qazx')
         user.is_staff = True
         user.is_superuser = False
         user.groups.add(customerGroup)
