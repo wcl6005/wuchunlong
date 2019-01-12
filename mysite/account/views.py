@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 
 from django.shortcuts import render
 from django.http.response import HttpResponseRedirect, HttpResponse,\
@@ -91,6 +90,8 @@ def _filterOrder(request, cleanData):
         orders = orders.filter(date__range=[startDate, endDate])
     return orders, monthNum
 
+
+#  http://localhost:8000/account/billing/1?
 @login_required
 def billing(request, page):
     operators = _getOperators()
@@ -228,7 +229,7 @@ def convertxlsx(order_list, filePath):
 
         ids = [i.id for i in order_list ]
         authors = [i.author.username for i in order_list ]
-        dates = [str(i.date) for i in order_list]
+        dates = [i.date for i in order_list]
         names = [i.company.name for i in order_list]    
         types = [u'制作' if i.type == 'Manufacture' else i.type for i in order_list ]
         contents = [i.content for i in order_list ]
@@ -242,7 +243,7 @@ def convertxlsx(order_list, filePath):
         checkouts = [u'已完成' if i.checkout else u'未结算' for i in order_list ]
         data = [ids, authors, dates, names, types, contents, materials, \
             prices, quantitys, taxPercents, priceIncludeTaxs, checkouts, ]
-
+ 
         workbook = xlsxwriter.Workbook(filePath)
         worksheet = workbook.add_worksheet()
         bold = workbook.add_format({'bold': 1})  #如何控制单元格宽度？  
@@ -274,7 +275,7 @@ def makexlsx(request):
     order_list = orders.order_by('-date') 
 
     def file_iterator(file_name, chunk_size=512):
-        with open(file_name, 'rb') as f:
+        with open(file_name,'rb') as f:
             while True:
                 c = f.read(chunk_size)
                 if c:
@@ -289,8 +290,8 @@ def makexlsx(request):
         response = StreamingHttpResponse(file_iterator(tempFilePath))
         response['Content-Type'] = 'application/octet-stream'
         response['Content-Disposition'] = 'attachment;filename="{0}"'.format(fileName)
+        print('tempFilePath=',tempFilePath)
         return response
-    
     ignoreList = ['page', 'csrfmiddlewaretoken']
     queryString = '?'+'&'.join(['%s=%s' % (k,v) for k,v in cleanData.items() if k not in ignoreList])
     try:

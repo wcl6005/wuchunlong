@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 import datetime
 from django.db import models
 from django.contrib.auth.models import User
@@ -16,7 +14,7 @@ class Company(models.Model):
     telephone = models.CharField(max_length=200)
     username = models.ForeignKey(User, on_delete=models.PROTECT)
     
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -24,7 +22,7 @@ class Material(models.Model):
     name = models.CharField(max_length=200, unique=True)
     price = models.FloatField()
     
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -65,7 +63,7 @@ class Order(models.Model):
         self.priceTotal = round(self.price * self.quantity, 2)
         self.priceIncludeTax = round(self.priceTotal * 100 / (100 - self.taxPercent), 2)
     
-    def __unicode__(self):
+    def __str__(self):
         content = self.content
         if len(content) > 10:
             content = content[:10]
