@@ -1,0 +1,5 @@
+-i https://pypi.douban.com/simple/ 
+
+mock
+nose
+

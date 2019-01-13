@@ -9,5 +9,4 @@ urlpatterns = [
     url(r'^add/billing/$', views.addBilling, name='add_billing'),
     url(r'^add/customer/$', views.addCustomer, name='add_customer'),
     url(r'^makexlsx/$', views.makexlsx, name="makexlsx"),
-
 ]
